@@ -1,6 +1,6 @@
-package lol.snowyjs.epiccore.Commands;
+package gg.minecrush.epiccore.Commands;
 
-import lol.snowyjs.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
