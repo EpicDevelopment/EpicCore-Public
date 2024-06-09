@@ -21,7 +21,7 @@ public class ClearChatCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("clearchat")) {
-            int lines = 100; // Default number of lines to clear [FUTURE CONFIG IMPLEMENTATION]
+            int lines = 100; // number of lines to clear [FUTURE CONFIG IMPLEMENTATION]
 
             if (args.length > 0) {
                 try {
