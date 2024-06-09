@@ -13,18 +13,25 @@
 #         `----'       `---`                            `----'
 
 prefix: '<##F69536>&lCore &8→&r'
+
+chat-format: "%luckperms_prefix% %player% %epictags_tag% &8→ %message%"
+
 no-permission: "&cYou do not have permission to execute this command."
 
 spawn-teleporting-in-seconds: '&aTeleporting to spawn in %delay%'
+
 spawn-teleported: "&aYou have been teleported to spawn"
+
 spawn-set: "&aSpawn location has been set successfully!"
 
 invalid-number: "&cPlease enter a valid number."
+
 chat-cleared: "&aChat has been cleared!"
 
 discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
 
 chat-muted: "&cChat has been muted by an admin."
+
 chat-unmuted: "&aChat has been unmuted by an admin."
 
 chat-muted-message: "&cYou cannot speak right now as the chat is muted."
