@@ -1,6 +1,6 @@
-package lol.snowyjs.epiccore.Listener;
+package gg.minecrush.epiccore.Listener;
 
-import lol.snowyjs.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
