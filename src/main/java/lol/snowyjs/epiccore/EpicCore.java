@@ -4,6 +4,8 @@ import lol.snowyjs.epiccore.Commands.ClearChatCommand;
 import lol.snowyjs.epiccore.Commands.DiscordCommand;
 import lol.snowyjs.epiccore.Commands.SetSpawnCommand;
 import lol.snowyjs.epiccore.Commands.SpawnCommand;
+import lol.snowyjs.epiccore.Commands.MuteChatCommand;
+import lol.snowyjs.epiccore.Listener.MuteChatListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -47,6 +49,10 @@ public final class EpicCore extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang));
         getCommand("discord").setExecutor(new DiscordCommand(this, lang));
+        getCommand("mutechat").setExecutor(new MuteChatCommand(this, lang));
+
+        // Event Registers
+        getServer().getPluginManager().registerEvents(new MuteChatListener(lang), this);
 
 
     }
