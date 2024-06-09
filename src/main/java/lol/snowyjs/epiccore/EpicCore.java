@@ -1,5 +1,8 @@
 package lol.snowyjs.epiccore;
 
+import lol.snowyjs.epiccore.Commands.ClearChatCommand;
+import lol.snowyjs.epiccore.Commands.SetSpawnCommand;
+import lol.snowyjs.epiccore.Commands.SpawnCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,7 +13,7 @@ import java.io.File;
 
 public final class EpicCore extends JavaPlugin {
 
-    private Lang langConfig;
+    private Lang lang;
     private Config config;
 
     @Override
@@ -36,6 +39,12 @@ public final class EpicCore extends JavaPlugin {
             getLogger().severe("[EpicCore] Failed to create lang file");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+        // Command Registers
+
+        getCommand("spawn").setExecutor(new SpawnCommand(this, lang));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang));
+        getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang));
 
 
     }
