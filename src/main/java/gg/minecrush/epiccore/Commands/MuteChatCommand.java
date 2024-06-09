@@ -1,7 +1,7 @@
-package lol.snowyjs.epiccore.Commands;
+package gg.minecrush.epiccore.Commands;
 
-import lol.snowyjs.epiccore.DataStorage.yaml.Lang;
-import lol.snowyjs.epiccore.Listener.MuteChatListener;
+import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.Listener.MuteChatListener;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,8 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MuteChatCommand implements CommandExecutor {
 
-    private final Lang lang;
     private final JavaPlugin plugin;
+    private final Lang lang;
     private boolean chatMuted;
 
     public MuteChatCommand(JavaPlugin plugin, Lang lang) {
@@ -31,7 +31,6 @@ public class MuteChatCommand implements CommandExecutor {
 
                 Bukkit.broadcastMessage(message);
 
-                // Notify the event listener about the state change
                 MuteChatListener.setChatMuted(chatMuted);
 
                 return true;
