@@ -1,6 +1,7 @@
 package lol.snowyjs.epiccore;
 
 import lol.snowyjs.epiccore.Commands.ClearChatCommand;
+import lol.snowyjs.epiccore.Commands.DiscordCommand;
 import lol.snowyjs.epiccore.Commands.SetSpawnCommand;
 import lol.snowyjs.epiccore.Commands.SpawnCommand;
 import org.bukkit.Bukkit;
@@ -45,6 +46,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(this, lang));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang));
+        getCommand("discord").setExecutor(new DiscordCommand(this, lang));
 
 
     }
