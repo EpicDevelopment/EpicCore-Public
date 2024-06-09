@@ -26,4 +26,9 @@ discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
 
 chat-muted: "&cChat has been muted by an admin."
 chat-unmuted: "&aChat has been unmuted by an admin."
+
 chat-muted-message: "&cYou cannot speak right now as the chat is muted."
+
+report-proof-question:
+report-broadcast:
+report-reported-success:
