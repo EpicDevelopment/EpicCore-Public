@@ -18,3 +18,7 @@ no-permission: "&cYou do not have permission to execute this command."
 spawn-teleporting-in-seconds: '&aTeleporting to spawn in %delay%'
 spawn-teleported: "&aYou have been teleported to spawn"
 spawn-set: "&aSpawn location has been set successfully!"
+
+invalid-number: "&cPlease enter a valid number."
+chat-cleared: "&aChat has been cleared!"
+
