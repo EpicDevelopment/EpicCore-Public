@@ -1,9 +1,9 @@
-package lol.snowyjs.epiccore.DataStorage.yaml;
+package gg.minecrush.epiccore.DataStorage.yaml;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
-import lol.snowyjs.epiccore.Util.color;
+import gg.minecrush.epiccore.Util.color;
 
 import java.io.File;
 import java.io.IOException;
