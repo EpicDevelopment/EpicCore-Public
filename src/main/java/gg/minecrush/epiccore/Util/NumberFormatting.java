@@ -1,4 +1,4 @@
-package lol.snowyjs.epiccore.Util;
+package gg.minecrush.epiccore.Util;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
