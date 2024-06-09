@@ -22,3 +22,4 @@ spawn-set: "&aSpawn location has been set successfully!"
 invalid-number: "&cPlease enter a valid number."
 chat-cleared: "&aChat has been cleared!"
 
+discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
