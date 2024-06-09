@@ -1,0 +1,34 @@
+name: EpicCore
+version: '${version}'
+main: lol.snowyjs.epiccore.EpicCore
+api-version: '1.20'
+authors:
+  - snowy
+  - awel
+  - jayden
+website: https://snowyjs.lol
+commands:
+  spawn:
+    description: Teleport yourself or others to spawn
+    usage: /spawn [<target>]
+  setspawn:
+    description: Set the spawn location for the server.
+    usage: /setspawn
+  report:
+    description: Report other players for violations if the second argument is not fulfilled a gui with options will be shown.
+    usage: /report <target> [<reason>]
+  epicfilter:
+    description: Setup the epicfilter to prevent blacklisted words from being sent to all online players
+    aliases: filter
+    usage: /epicfilter <add/remove> <string>
+  discord:
+    description: Use this command to join the discord server
+    usage: /discord
+  clearchat:
+    description: Use this command to clear chat if there has been spam or any blacklisted words option for the first argument is how many blank lines to send
+    aliases: /cc
+    usage: /clearchat [<int>]
+  epiccore:
+    description: Admin gui to view the configuration for EpicCore as well as recent logs for player actions
+    aliases: epic, epicadmin
+    usage: /epiccore
