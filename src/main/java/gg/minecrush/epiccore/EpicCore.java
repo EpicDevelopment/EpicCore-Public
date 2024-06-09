@@ -1,16 +1,14 @@
-package lol.snowyjs.epiccore;
+package gg.minecrush.epiccore;
 
-import lol.snowyjs.epiccore.Commands.ClearChatCommand;
-import lol.snowyjs.epiccore.Commands.DiscordCommand;
-import lol.snowyjs.epiccore.Commands.SetSpawnCommand;
-import lol.snowyjs.epiccore.Commands.SpawnCommand;
-import lol.snowyjs.epiccore.Commands.MuteChatCommand;
-import lol.snowyjs.epiccore.Listener.MuteChatListener;
+import gg.minecrush.epiccore.API.CoreExpansion;
+import gg.minecrush.epiccore.Commands.*;
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
+import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.GUI.ReportGUI;
+import gg.minecrush.epiccore.Listener.MuteChatListener;
+import gg.minecrush.epiccore.Listener.ReportListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import lol.snowyjs.epiccore.DataStorage.yaml.Config;
-import lol.snowyjs.epiccore.DataStorage.yaml.Lang;
 
 import java.io.File;
 
@@ -18,6 +16,8 @@ public final class EpicCore extends JavaPlugin {
 
     private Lang lang;
     private Config config;
+
+
 
     @Override
     public void onEnable() {
@@ -43,16 +43,35 @@ public final class EpicCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
+        ReportListener reportListener = new ReportListener();
+        ReportGUI reportGUI = new ReportGUI(reportListener);
+
+        // Check for PAPI
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new CoreExpansion(this).register();
+        } else {
+            getLogger().severe("-------------------------------------");
+            getLogger().severe("While looking for PlaceholderAPI");
+            getLogger().severe("");
+            getLogger().severe("Could not find PlaceholderAPI! This plugin is required.");
+            getLogger().severe("-------------------------------------");
+        }
+
+
         // Command Registers
 
         getCommand("spawn").setExecutor(new SpawnCommand(this, lang));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang));
         getCommand("discord").setExecutor(new DiscordCommand(this, lang));
-        getCommand("mutechat").setExecutor(new MuteChatCommand(this, lang));
+        // getCommand("mutechat").setExecutor(new MuteChatCommand(this, lang));
+        getCommand("report").setExecutor(new ReportCommand(reportGUI));
 
         // Event Registers
+
         getServer().getPluginManager().registerEvents(new MuteChatListener(lang), this);
+        getServer().getPluginManager().registerEvents(reportListener, this);
 
 
     }
