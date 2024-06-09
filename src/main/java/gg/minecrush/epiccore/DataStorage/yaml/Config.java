@@ -1,14 +1,9 @@
-package lol.snowyjs.epiccore.DataStorage.yaml;
+package gg.minecrush.epiccore.DataStorage.yaml;
 
-import net.milkbowl.vault.chat.Chat;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import lol.snowyjs.epiccore.Util.color;
-
-import net.milkbowl.vault.chat.Chat;
+import gg.minecrush.epiccore.Util.color;
 
 import java.io.File;
 import java.io.IOException;
