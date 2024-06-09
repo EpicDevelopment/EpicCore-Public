@@ -1,4 +1,4 @@
-package lol.snowyjs.epiccore.Util;
+package gg.minecrush.epiccore.Util;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
