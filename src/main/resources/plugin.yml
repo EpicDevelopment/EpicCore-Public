@@ -1,6 +1,6 @@
 name: EpicCore
 version: '${version}'
-main: lol.snowyjs.epiccore.EpicCore
+main: gg.minecrush.epiccore.EpicCore
 api-version: '1.20'
 authors:
   - snowy
@@ -30,5 +30,5 @@ commands:
     usage: /clearchat [<int>]
   epiccore:
     description: Admin gui to view the configuration for EpicCore as well as recent logs for player actions
-    aliases: epic, epicadmin
+    aliases: epicadmin
     usage: /epiccore
