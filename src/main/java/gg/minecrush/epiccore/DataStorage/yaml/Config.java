@@ -1,5 +1,6 @@
 package gg.minecrush.epiccore.DataStorage.yaml;
 
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -26,6 +27,14 @@ public class Config {
             plugin.saveResource("config.yml", false);
         }
         config = YamlConfiguration.loadConfiguration(configFile);
+    }
+
+    public double getValuedb(String key) {
+        String value = config.getString(key);
+        if (value == null) {
+            return 0;
+        }
+        return Double.parseDouble(value);
     }
 
     public String getValue(String key) {
