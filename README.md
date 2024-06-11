@@ -6,9 +6,7 @@
 <h3 align="center">Why EpicCore?</h3><div align="center">
   
 <i>We strive for complete customizability in order to compete</i>
-  
 <i>with Skript. Due to this, our land & config files are packed</i>
-
 <i>with options for every command, gui and handler that we offer.</i>
 
 
