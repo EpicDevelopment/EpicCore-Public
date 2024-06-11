@@ -28,4 +28,4 @@
 <i>Configurable Chat Handler</i>
 
 <h3 align="center">Credits</h3><div align="center">
-<i>made with ❤️ by awel and snowy</i>
+<i>made by awel and snowy using ❤️</i>
