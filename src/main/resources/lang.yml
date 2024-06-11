@@ -14,7 +14,14 @@
 
 prefix: '<##F69536>&lCore &8→&r'
 
-chat-format: "%luckperms_prefix% %player% %epictags_tag% &8→ %message%"
+# Player chat message format (Unregisted placeholders will cause issues)
+chat-format: "%luckperms_prefix%%player% &8» &f%message%"
+
+announcements:
+  - "%nl% &e&lANNOUNCEMENTS &8- &7You can get rewards from joining our discord!%nl%"
+  - "%nl% &e&lANNOUNCEMENTS &8- &7Support our server with &b&n/vote&f %nl%"
+
+broadcast-format: "%nl% &e&lBROADCAST &8» &f%message%"
 
 no-permission: "&cYou do not have permission to execute this command."
 
@@ -30,12 +37,35 @@ chat-cleared: "&aChat has been cleared!"
 
 discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
 
-chat-muted: "&cChat has been muted by an admin."
+chat-muted: "&cChat has been muted by %player%."
 
-chat-unmuted: "&aChat has been unmuted by an admin."
+chat-unmuted: "&aChat has been unmuted by %player%."
 
 chat-muted-message: "&cYou cannot speak right now as the chat is muted."
 
-report-proof-question:
-report-broadcast:
-report-reported-success:
+invalid-characters: "&cYour message contains invalid characters."
+
+filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
+
+reloaded: "&aReloaded the Filter, Config & Messages data (in %time%ms)"
+
+report-broadcast: |
+  &f 
+  &3&lREPORT
+  &f
+  &7Player: &3%player%
+  &7Reporter: &3%reporter%
+  &7Reason: &3%reason%
+  &f
+
+epiccore-help: |
+  &7&m                                                      &f
+  &f
+  &c&lEPICCORE HELP &7» &fList of commands and arguments
+  &f
+  &7» &f/epiccore reload &8- &fReload the config, language file & filter files.
+  &7» &f/epiccore help &8- &fGeneral help command of the core.
+  &f
+  &7&m                                                      &f
+
+report-reported-success: "&aThanks for submitting your %reason% report. We understand your concerns and it will be reviewed as soon as possible."

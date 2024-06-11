@@ -32,3 +32,11 @@ commands:
     description: Admin gui to view the configuration for EpicCore as well as recent logs for player actions
     aliases: epicadmin
     usage: /epiccore
+  mutechat:
+    description: Admin mutechat command
+    aliases: chatmtue
+    usage: /mutechat
+  broadcast:
+    description: Broadcast messages to all online players!
+    aliases: bc
+    usage: /broadcast

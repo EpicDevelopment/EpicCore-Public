@@ -1,5 +1,7 @@
 package gg.minecrush.epiccore.GUI;
 
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
+import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Listener.ReportListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,8 +14,14 @@ public class ReportGUI {
 
     private final ReportListener reportListener;
 
-    public ReportGUI(ReportListener reportListener) {
+    private final Config config;
+
+    private final Lang lang;
+
+    public ReportGUI(ReportListener reportListener, Config config, Lang lang) {
         this.reportListener = reportListener;
+        this.config = config;
+        this.lang = lang;
     }
 
     public void openReportGUI(Player player, String reportedPlayer) {
@@ -32,7 +40,7 @@ public class ReportGUI {
         player.openInventory(gui);
 
         // Register the reported player with the listener
-        reportListener.setReportedPlayer(player, reportedPlayer);
+        reportListener.setReportedPlayer(player, reportedPlayer,config, lang);
     }
 
     private ItemStack createGuiItem(Material material, String name) {

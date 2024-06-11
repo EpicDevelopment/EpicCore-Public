@@ -13,16 +13,11 @@
 #         `----'       `---`                            `----'
 
 
-staff-permission: "epiccore.staff.chat"
-clearchat-permission: "epiccore.chat.clearchat"
-discord-command-permission: "epiccore.discord"
-chat-muted-bypass-permission: "epiccore.chat.bypass"
-admin-command-permission: "epiccore.manage.admin"
-broadcast-command-permission: "epiccore.chat.broadcast"
-mutechat-command-permission: "epiccore.chat.mutechat"
-setspawn-command-permission: "epiccore.manage.spawn"
 
-automatic-announcements: true
+# You have to execute /epiccore reload to reload the filter!
 
-report-cooldown: 10 # In seconds!
-announcement-cooldown: 90 # In seconds!
+words:
+  - nigger
+  - nigga
+  - fagg
+  - n1gg

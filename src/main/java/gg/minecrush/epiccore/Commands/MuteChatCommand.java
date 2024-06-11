@@ -1,5 +1,7 @@
 package gg.minecrush.epiccore.Commands;
 
+import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Listener.MuteChatListener;
 import org.bukkit.Bukkit;
@@ -13,25 +15,35 @@ public class MuteChatCommand implements CommandExecutor {
     private final JavaPlugin plugin;
     private final Lang lang;
     private boolean chatMuted;
+    private ChatManager chatManager;
+    private Config config;
 
-    public MuteChatCommand(JavaPlugin plugin, Lang lang) {
+    public MuteChatCommand(JavaPlugin plugin, Lang lang, ChatManager chatManager, Config config) {
         this.plugin = plugin;
         this.lang = lang;
-        this.chatMuted = false;
+        this.chatManager = chatManager;
+        this.chatMuted = chatManager.isChatMuted();
+        this.config = config;
+    }
+
+    public Boolean getchatMuted(){
+        return this.chatMuted;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("mutechat")) {
-            if (sender.hasPermission("epiccore.mutechat.command")) {
-                chatMuted = !chatMuted;
-
-                String messageKey = chatMuted ? "chat-muted" : "chat-unmuted";
+            if (sender.hasPermission(config.getValue("mutechat-command-permission"))) {
+                chatManager.setChatMuted(!chatManager.isChatMuted());
+                String messageKey = "";
+                if (chatManager.isChatMuted()) {
+                    messageKey = "chat-muted";
+                } else {
+                    messageKey = "chat-unmuted";
+                }
                 String message = lang.getReplacedMessage(messageKey);
 
-                Bukkit.broadcastMessage(message);
-
-                MuteChatListener.setChatMuted(chatMuted);
+                Bukkit.broadcastMessage(message.replace("%player%", sender.getName()));
 
                 return true;
             } else {

@@ -1,5 +1,6 @@
 package gg.minecrush.epiccore.Commands;
 
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -11,17 +12,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ClearChatCommand implements CommandExecutor {
 
     private final Lang lang;
+    private final Config config;
     private final JavaPlugin plugin;
 
-    public ClearChatCommand(JavaPlugin plugin, Lang lang) {
+    public ClearChatCommand(JavaPlugin plugin, Lang lang, Config config) {
         this.plugin = plugin;
         this.lang = lang;
+        this.config = config;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("clearchat")) {
-            if (sender.hasPermission("epiccore.clearchat")) {
+            if (sender.hasPermission(config.getValue("clearchat-permission"))) {
                 int lines = 100; // number of lines to clear [FUTURE CONFIG IMPLEMENTATION]
 
                 if (args.length > 0) {

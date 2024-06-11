@@ -1,5 +1,6 @@
 package gg.minecrush.epiccore.Listener;
 
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -18,10 +19,14 @@ public class ReportListener implements Listener {
 
     Lang lang;
 
+    Config config;
+
     private final Map<Player, String> reportMap = new HashMap<>();
 
-    public void setReportedPlayer(Player player, String reportedPlayer) {
+    public void setReportedPlayer(Player player, String reportedPlayer, Config config, Lang lang) {
         reportMap.put(player, reportedPlayer);
+        this.lang = lang;
+        this.config = config;
     }
 
     @EventHandler
@@ -38,14 +43,14 @@ public class ReportListener implements Listener {
                 String reportedPlayer = reportMap.get(player);
 
                 if (reportedPlayer != null) {
-                    player.sendMessage(lang.getReplacedMessage("report-reported-success"));
+                    player.sendMessage(lang.getReplacedMessage("report-reported-success").replace("%player%", reportedPlayer).replace("%reason%", reason));
                     String broadcastMessage = lang.getReplacedMessage("report-broadcast");
                     for (Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {
-                        if (onlinePlayer.hasPermission("example")) {
-                            onlinePlayer.sendMessage(broadcastMessage);
+                        if (onlinePlayer.hasPermission(config.getValue("staff-permission"))) {
+                            onlinePlayer.sendMessage(broadcastMessage.replace("%player%", reportedPlayer).replace("%reporter%", player.getName()).replace("%reason%", reason));
                         }
                     }
-                    player.sendMessage(lang.getReplacedMessage("report-proof-question"));
+                    //player.sendMessage(lang.getReplacedMessage("report-proof-question"));
                     reportMap.remove(player);
                     player.closeInventory();
                 }

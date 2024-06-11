@@ -1,5 +1,6 @@
 package gg.minecrush.epiccore.Commands;
 
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,10 +12,12 @@ public class DiscordCommand implements CommandExecutor {
 
     private final Lang lang;
     private final JavaPlugin plugin;
+    private final Config config;
 
-    public DiscordCommand(JavaPlugin plugin, Lang lang) {
+    public DiscordCommand(JavaPlugin plugin, Lang lang, Config config) {
         this.plugin = plugin;
         this.lang = lang;
+        this.config = config;
     }
 
     @Override
@@ -23,7 +26,7 @@ public class DiscordCommand implements CommandExecutor {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
 
-                if (player.hasPermission("epiccore.discord")) {
+                if (player.hasPermission(config.getValue("discord-command-permission"))) {
                     player.sendMessage(lang.getReplacedMessage("discord-link"));
                 } else {
                     player.sendMessage(lang.getReplacedMessage("no-permission"));
