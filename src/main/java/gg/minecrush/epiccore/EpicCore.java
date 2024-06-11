@@ -87,7 +87,7 @@ public final class EpicCore extends JavaPlugin {
 
         // Command Registers
 
-        getCommand("spawn").setExecutor(new SpawnCommand(this, lang));
+        getCommand("spawn").setExecutor(new SpawnCommand(this, lang, config));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang, config));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang, config));
         getCommand("clearchat").setTabCompleter(new ClearChatCompletion());
