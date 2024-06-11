@@ -4,6 +4,7 @@ import gg.minecrush.epiccore.API.CoreExpansion;
 import gg.minecrush.epiccore.Async.AutoAnnouncements;
 import gg.minecrush.epiccore.Commands.*;
 import gg.minecrush.epiccore.Commands.TabCompletes.AdminCompletion;
+import gg.minecrush.epiccore.Commands.TabCompletes.ReportCompletion;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
@@ -93,6 +94,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("epiccore").setTabCompleter(new AdminCompletion());
         getCommand("mutechat").setExecutor(new MuteChatCommand(this, lang, chatManager, config));
         getCommand("report").setExecutor(new ReportCommand(reportGUI, config));
+        getCommand("report").setTabCompleter(new ReportCompletion());
         getCommand("broadcast").setExecutor(new BroadcastCommand(lang, config));
 
         // Event Registers
