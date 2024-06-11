@@ -29,7 +29,7 @@ public class SetSpawnCommand implements CommandExecutor {
 
                 if (player.hasPermission(config.getValue("setspawn-command-permission"))) {
                     Location location = player.getLocation();
-                    plugin.getConfig().set("spawn.location.word", location.getWorld().getName());
+                    plugin.getConfig().set("spawn.location.world", location.getWorld().getName());
                     plugin.getConfig().set("spawn.location.x", location.getX());
                     plugin.getConfig().set("spawn.location.y", location.getY());
                     plugin.getConfig().set("spawn.location.z", location.getZ());
