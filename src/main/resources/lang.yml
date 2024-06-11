@@ -29,6 +29,8 @@ spawn-teleporting-in-seconds: '&aTeleporting to spawn in %delay%'
 
 spawn-teleported: "&aYou have been teleported to spawn"
 
+spawn-teleporting-canceled: "&cSpawn teleport canceled due to movement"
+
 spawn-set: "&aSpawn location has been set successfully!"
 
 invalid-number: "&cPlease enter a valid number."
