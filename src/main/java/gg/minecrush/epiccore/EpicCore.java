@@ -4,6 +4,7 @@ import gg.minecrush.epiccore.API.CoreExpansion;
 import gg.minecrush.epiccore.Async.AutoAnnouncements;
 import gg.minecrush.epiccore.Commands.*;
 import gg.minecrush.epiccore.Commands.TabCompletes.AdminCompletion;
+import gg.minecrush.epiccore.Commands.TabCompletes.ClearChatCompletion;
 import gg.minecrush.epiccore.Commands.TabCompletes.ReportCompletion;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
@@ -89,6 +90,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(this, lang));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang, config));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang, config));
+        getCommand("clearchat").setTabCompleter(new ClearChatCompletion());
         getCommand("discord").setExecutor(new DiscordCommand(this, lang, config));
         getCommand("epiccore").setExecutor(new EpicCoreCommand(lang, config, filter));
         getCommand("epiccore").setTabCompleter(new AdminCompletion());
