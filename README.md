@@ -3,6 +3,7 @@
 <i>⚡Faster than Skript⚡</i>
 
 <h3 align="center">Why EpicCore?</h3><div align="center">
+  
 <i>We strive for complete customizability in order to compete</i>
   
 <i>with Skript. Due to this, our land & config files are packed</i>
@@ -11,6 +12,7 @@
 
 
 <h3 align="center">Features</h3><div align="center">
+  
 <i>Configurable Broadcast Core</i>
 
 <i>Configurable ClearChat System</i>
