@@ -1,6 +1,7 @@
 package gg.minecrush.epiccore.Commands;
 
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,6 +24,7 @@ public class SpawnCommand implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("spawn")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
+                Location loc = player.getLocation();
 
                 new BukkitRunnable() {
                     int count = 0;
@@ -30,7 +32,11 @@ public class SpawnCommand implements CommandExecutor {
                     @Override
                     public void run() {
                         if (count < 5) {
-                            player.sendMessage(lang.getReplacedMessage("spawn-teleporting-in-seconds"));
+                            if (!loc.equals(player.getLocation())) {
+                                player.sendMessage(lang.getReplacedMessage("spawn-teleporting-canceled"));
+                                cancel();
+                            }
+                            player.sendMessage(lang.getReplacedMessage("spawn-teleporting-in-seconds").replace("%delay%", 5 - count + ""));
                             count++;
                         } else {
                             player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
