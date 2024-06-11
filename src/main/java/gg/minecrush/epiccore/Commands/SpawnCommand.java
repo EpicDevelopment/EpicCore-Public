@@ -1,7 +1,10 @@
 package gg.minecrush.epiccore.Commands;
 
+import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,10 +16,12 @@ public class SpawnCommand implements CommandExecutor {
 
     private final Lang lang;
     private final JavaPlugin plugin;
+    private final Config config;
 
-    public SpawnCommand(JavaPlugin plugin, Lang lang) {
+    public SpawnCommand(JavaPlugin plugin, Lang lang, Config config) {
         this.plugin = plugin;
         this.lang = lang;
+        this.config = config;
     }
 
     @Override
@@ -40,6 +45,16 @@ public class SpawnCommand implements CommandExecutor {
                             }
                         } else {
                             player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
+
+                            World worldName = Bukkit.getWorld(config.getValue("spawn.location.world"));
+                            double x = config.getValuedb("spawn.location.x");
+                            double y = config.getValuedb("spawn.location.y");
+                            double z = config.getValuedb("spawn.location.z");
+                            float pitch = (float) config.getValuedb("spawn.location.pitch");
+                            float yaw = (float) config.getValuedb("spawn.location.yaw");
+
+                            Location spawn = new Location(worldName, x, y, z);
+                            player.teleport(spawn);
                             cancel();
                         }
                     }
