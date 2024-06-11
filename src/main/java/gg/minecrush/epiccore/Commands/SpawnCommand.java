@@ -46,14 +46,14 @@ public class SpawnCommand implements CommandExecutor {
                         } else {
                             player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
 
-                            World worldName = Bukkit.getWorld(config.getValue("spawn.location.world"));
+                            String worldName = config.getValue("spawn.location.world");
                             double x = config.getValuedb("spawn.location.x");
                             double y = config.getValuedb("spawn.location.y");
                             double z = config.getValuedb("spawn.location.z");
                             float pitch = (float) config.getValuedb("spawn.location.pitch");
                             float yaw = (float) config.getValuedb("spawn.location.yaw");
-
-                            Location spawn = new Location(worldName, x, y, z);
+                            World world = Bukkit.getWorld(worldName);
+                            Location spawn = new Location(world, x, y, z, yaw, pitch);
                             player.teleport(spawn);
                             cancel();
                         }
