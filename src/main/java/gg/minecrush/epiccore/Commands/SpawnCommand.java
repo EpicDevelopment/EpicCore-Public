@@ -32,12 +32,12 @@ public class SpawnCommand implements CommandExecutor {
                     @Override
                     public void run() {
                         if (count < 5) {
+                            player.sendMessage(lang.getReplacedMessage("spawn-teleporting-in-seconds").replace("%delay%", 5 - count + ""));
+                            count++;
                             if (!loc.equals(player.getLocation())) {
                                 player.sendMessage(lang.getReplacedMessage("spawn-teleporting-canceled"));
                                 cancel();
                             }
-                            player.sendMessage(lang.getReplacedMessage("spawn-teleporting-in-seconds").replace("%delay%", 5 - count + ""));
-                            count++;
                         } else {
                             player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
                             cancel();
