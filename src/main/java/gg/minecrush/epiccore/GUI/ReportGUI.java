@@ -33,9 +33,9 @@ public class ReportGUI {
         gui.setItem(3, createGuiItem(Material.PAPER, "Spam"));
         gui.setItem(4, createGuiItem(Material.PAPER, "Advertisement"));
         gui.setItem(5, createGuiItem(Material.PAPER, "Filter Bypass"));
-        gui.setItem(6, createGuiItem(Material.PAPER, "Inappropriate Skin"));
-        gui.setItem(7, createGuiItem(Material.PAPER, "Inappropriate Name"));
-        gui.setItem(8, createGuiItem(Material.PAPER, "Inappropriate Build"));
+        gui.setItem(6, createGuiItem(Material.PAPER, "Inappropriate Content"));
+        gui.setItem(7, createGuiItem(Material.PAPER, "Doxing/DDOS"));
+        gui.setItem(8, createGuiItem(Material.PAPER, "Other"));
 
         player.openInventory(gui);
 
