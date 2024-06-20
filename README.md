@@ -1,7 +1,5 @@
 <h1 align="center">⚡EpicCore⚡</h1><div align="center">
 <i>The core plugin you used to dream about!</i>
-  
-<i><b>⚡Faster than Skript⚡</b></i>
 
 <h3 align="center">Why EpicCore?</h3><div align="center">
   
