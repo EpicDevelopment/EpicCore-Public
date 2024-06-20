@@ -1,4 +1,4 @@
-<h1 align="center">⚡EpicCore FASTER THAN SKRIPT⚡</h1><div align="center">
+<h1 align="center">⚡EpicCore⚡</h1><div align="center">
 <i>The core plugin you used to dream about!</i>
 
 <h3 align="center">Why EpicCore?</h3><div align="center">
