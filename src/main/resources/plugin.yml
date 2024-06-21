@@ -26,7 +26,7 @@ commands:
     aliases: epicadmin
     usage: epiccore
   mutechat:
-    description: Admin mutechat command
+    description: Mute server chat.
     aliases: chatmute
   broadcast:
     aliases: bc
