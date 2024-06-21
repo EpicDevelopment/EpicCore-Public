@@ -17,10 +17,6 @@ commands:
   report:
     description: Report other players for violations if the second argument is not fulfilled a gui with options will be shown.
     usage: /report <target> [<reason>]
-  epicfilter:
-    description: Setup the epicfilter to prevent blacklisted words from being sent to all online players
-    aliases: filter
-    usage: /epicfilter <add/remove> <string>
   discord:
     description: Use this command to join the discord server
     usage: /discord
@@ -29,7 +25,7 @@ commands:
     aliases: /cc
     usage: /clearchat [<int>]
   epiccore:
-    description: Admin gui to view the configuration for EpicCore as well as recent logs for player actions
+    description: Admin command to view the configuration for EpicCore
     aliases: epicadmin
     usage: /epiccore
   mutechat:
@@ -40,3 +36,18 @@ commands:
     description: Broadcast messages to all online players!
     aliases: bc
     usage: /broadcast
+  gmc:
+    usage: /gmc
+    description: Gamemode creative command
+  gma:
+    usage: /gma
+    description: Gamemode adventure command
+  gmsp:
+    usage: /gmsp
+    description: Gamemode spectator command
+  gms:
+    usage: /gms
+    description: Gamemode survival command
+  gamemode:
+    usage: /gamemode <gamemode>
+    description: Update your gamemode
