@@ -12,27 +12,67 @@
 #         |   | ,'    \   \ .'                         \   \  /
 #         `----'       `---`                            `----'
 
+# Enable or disable chat formating
+format-chat: true
 
+# Permissions for various commands and functionalities
+
+# Permission to chat as staff
 staff-permission: "epiccore.staff.chat"
+
+# Permission to clear chat
 clearchat-permission: "epiccore.chat.clearchat"
+
+# Permission to use the Discord command
 discord-command-permission: "epiccore.discord"
+
+# Permission to bypass chat mute
 chat-muted-bypass-permission: "epiccore.chat.bypass"
+
+# Permission to use admin commands
 admin-command-permission: "epiccore.manage.admin"
+
+# Permission to use broadcast commands
 broadcast-command-permission: "epiccore.chat.broadcast"
+
+# Permission to mute chat
 mutechat-command-permission: "epiccore.chat.mutechat"
+
+# Permission to set the spawn location
 setspawn-command-permission: "epiccore.manage.spawn"
+
+# Permission to switch to adventure mode
 gma-command-permission: "epiccore.gamemode.adventure"
+
+# Permission to switch to survival mode
 gms-command-permission: "epiccore.gamemode.survival"
+
+# Permission to switch to spectator mode
 gmsp-command-permission: "epiccore.gamemode.spectator"
+
+# Permission to switch to creative mode
 gmc-command-permission: "epiccore.gamemode.creative"
+
+# General permission for gamemode commands
 gamemode-command-permission: "epiccore.gamemode"
+
+# Permission to enable flight mode
 fly-command-permission: "epiccore.fly"
+
+# Permission to use the /invsee command
 invsee-command-permission: "epiccore.inventory.invsee"
+
+# Permission to open one's own enderchest
 enderchest-command-permission: "epiccore.inventory.enderchest"
+
+# Permission to open another player's enderchest
 enderchest-other-command-permission: "epiccore.inventory.enderchest.others"
 
-
+# Enable or disable automatic announcements
 automatic-announcements: true
 
+# Cooldown period for reports (in seconds)
 report-cooldown: 10 # In seconds!
+
+# Cooldown period for announcements (in seconds)
 announcement-cooldown: 90 # In seconds!
