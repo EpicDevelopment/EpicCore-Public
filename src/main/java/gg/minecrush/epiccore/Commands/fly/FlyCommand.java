@@ -54,6 +54,10 @@ public class FlyCommand implements CommandExecutor {
                                     .replace("%target%", target.getName())
                                     .replace("%player%", player.getName()));
                         }
+                        targ.sendMessage(lang.getReplacedMessage("flight-disabled-other")
+                                .replace("%target%", target.getName())
+                                .replace("%player%", player.getName()));
+                    }
                     } else {
                         player.sendMessage(lang.getReplacedMessage("player-doesnt-exist"));
                     }
