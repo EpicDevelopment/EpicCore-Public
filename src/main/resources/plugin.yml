@@ -10,7 +10,6 @@ website: https://snowyjs.lol
 commands:
   spawn:
     description: Teleport yourself or others to spawn
-    usage: spawn [target]
   setspawn:
     description: Set the spawn location for the server.
   report:
