@@ -48,3 +48,9 @@ commands:
   flyspeed:
     description: Update a players movement speed
     aliases: walkspeed
+  invsee:
+    description: View a players inventory
+    aliases: inventorysee
+  enderchest:
+    description: View a players enderchest
+    aliases: ec
