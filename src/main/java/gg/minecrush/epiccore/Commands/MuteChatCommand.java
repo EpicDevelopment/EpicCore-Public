@@ -46,7 +46,7 @@ public class MuteChatCommand implements CommandExecutor {
                 }
                 String message = lang.getReplacedMessage(messageKey);
                 for(Player p : Bukkit.getOnlinePlayers()) {
-                    p.playSound(p.getLocation(), SOUND.BLOCK_ANVIL_DESTROY, 1, 2);
+                    p.playSound(p.getLocation(), s, 1, 2);
                 }
 
                 Bukkit.broadcastMessage(message.replace("%player%", sender.getName()));
