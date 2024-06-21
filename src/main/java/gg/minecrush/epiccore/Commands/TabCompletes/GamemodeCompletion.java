@@ -16,9 +16,8 @@ public class GamemodeCompletion implements TabCompleter {
             completions.add("survival");
             completions.add("spectator");
             completions.add("adventure");
-            return completions;
 
         }
-        return null;
+        return completions;
     }
 }
