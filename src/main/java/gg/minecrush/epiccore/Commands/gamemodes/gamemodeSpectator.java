@@ -40,7 +40,7 @@ public class gamemodeSpectator implements CommandExecutor {
 
             Player player = (Player) sender;
             if (args.length == 0 || args.length == 1) {
-                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "spectator"));
+                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "spectator").replace("%player%", target.getName()));
                 target.setGameMode(GameMode.SPECTATOR);
             } else {
                 player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gmsp"));
