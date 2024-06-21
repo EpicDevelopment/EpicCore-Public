@@ -7,6 +7,9 @@ import gg.minecrush.epiccore.Commands.TabCompletes.*;
 import gg.minecrush.epiccore.Commands.fly.FlyCommand;
 import gg.minecrush.epiccore.Commands.fly.FlySpeedCommand;
 import gg.minecrush.epiccore.Commands.gamemodes.*;
+import gg.minecrush.epiccore.Commands.inventory.EnderchestCommand;
+import gg.minecrush.epiccore.Commands.inventory.InventoryCompletion;
+import gg.minecrush.epiccore.Commands.inventory.InvseeCommand;
 import gg.minecrush.epiccore.Commands.spawn.SetSpawnCommand;
 import gg.minecrush.epiccore.Commands.spawn.SpawnCommand;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
@@ -113,6 +116,13 @@ public final class EpicCore extends JavaPlugin {
         getCommand("flyspeed").setExecutor(new FlySpeedCommand(config, lang));
         getCommand("flyspeed").setTabCompleter(new FlySpeedCompletion());
 
+        getCommand("enderchest").setExecutor(new EnderchestCommand(lang, config));
+        getCommand("invsee").setExecutor(new InvseeCommand(lang, config));
+        getCommand("enderchest").setTabCompleter(new InventoryCompletion());
+        getCommand("invsee").setTabCompleter(new InventoryCompletion());
+
+
+
         // Event Registers
 
         getServer().getPluginManager().registerEvents(new MuteChatListener(lang, chatManager, config), this);
@@ -134,6 +144,9 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("gmsp-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("gamemode-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("fly-command-permission"), "Update player flight mode", PermissionDefault.OP);
+        registerPermission(config.getValue("invsee-command-permission"), "View players inventory", PermissionDefault.OP);
+        registerPermission(config.getValue("enderchest-command-permission"), "View players inventory", PermissionDefault.OP);
+        registerPermission(config.getValue("enderchest-other-command-permission"), "View players inventory", PermissionDefault.OP);
 
 
         // Automatic Events Register
@@ -169,5 +182,8 @@ public final class EpicCore extends JavaPlugin {
         unregisterPermission(config.getValue("gmsp-command-permission"), "Update player gamemode", PermissionDefault.OP);
         unregisterPermission(config.getValue("gamemode-command-permission"), "Update player gamemode", PermissionDefault.OP);
         unregisterPermission(config.getValue("fly-command-permission"), "Update player fly mode", PermissionDefault.OP);
+        unregisterPermission(config.getValue("invsee-command-permission"), "View players inventory", PermissionDefault.OP);
+        unregisterPermission(config.getValue("enderchest-command-permission"), "View players inventory", PermissionDefault.OP);
+        unregisterPermission(config.getValue("enderchest-other-command-permission"), "View players inventory", PermissionDefault.OP);
     }
 }
