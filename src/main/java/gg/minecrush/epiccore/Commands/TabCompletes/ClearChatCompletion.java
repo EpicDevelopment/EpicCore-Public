@@ -13,8 +13,7 @@ public class ClearChatCompletion implements TabCompleter {
         List<String> completions = new ArrayList<>();
         if (args.length == 1) {
             completions.add("<lines>");
-            return completions;
         }
-        return null;
+        return completions;
     }
 }
