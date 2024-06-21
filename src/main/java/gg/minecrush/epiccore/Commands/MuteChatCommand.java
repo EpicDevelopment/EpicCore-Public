@@ -42,13 +42,16 @@ public class MuteChatCommand implements CommandExecutor {
                 String messageKey = "";
                 if (chatManager.isChatMuted()) {
                     messageKey = "chat-muted";
+                    for(Player p : Bukkit.getOnlinePlayers()) {
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 2);
+                    }
                 } else {
                     messageKey = "chat-unmuted";
+                    for(Player p : Bukkit.getOnlinePlayers()) {
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_ACTIVATE, 1, 2);
+                    }
                 }
                 String message = lang.getReplacedMessage(messageKey);
-                for(Player p : Bukkit.getOnlinePlayers()) {
-                    p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 1, 2);
-                }
 
                 Bukkit.broadcastMessage(message.replace("%player%", sender.getName()));
 
