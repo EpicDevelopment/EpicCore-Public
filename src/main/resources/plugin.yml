@@ -42,7 +42,6 @@ commands:
   gamemode:
     description: Update your gamemode
   fly:
-    usage: fly [player]
     aliases: flight
     description: Toggle yours or another player's flight mode.
   flyspeed:
