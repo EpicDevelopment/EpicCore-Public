@@ -40,7 +40,7 @@ public class gamemodeAdventure implements CommandExecutor {
 
             Player player = (Player) sender;
             if (args.length == 0 || args.length == 1) {
-                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "adventure"));
+                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "adventure").replace("%player%", target.getName()));
                 target.setGameMode(GameMode.ADVENTURE);
             } else {
                 player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gma"));
