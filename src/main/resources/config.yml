@@ -27,6 +27,10 @@ gmsp-command-permission: "epiccore.gamemode.spectator"
 gmc-command-permission: "epiccore.gamemode.creative"
 gamemode-command-permission: "epiccore.gamemode"
 fly-command-permission: "epiccore.fly"
+invsee-command-permission: "epiccore.inventory.invsee"
+enderchest-command-permission: "epiccore.inventory.enderchest"
+enderchest-other-command-permission: "epiccore.inventory.enderchest.others"
+
 
 automatic-announcements: true
 
