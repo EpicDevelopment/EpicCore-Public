@@ -40,7 +40,7 @@ public class gamemodeCreative implements CommandExecutor {
 
             Player player = (Player) sender;
             if (args.length == 0 || args.length == 1) {
-                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "creative"));
+                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "creative").replace("%player%", target.getName()));
                 target.setGameMode(GameMode.CREATIVE);
             } else {
                 player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gmc"));
