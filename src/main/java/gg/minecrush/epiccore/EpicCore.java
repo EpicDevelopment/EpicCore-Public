@@ -7,6 +7,8 @@ import gg.minecrush.epiccore.Commands.TabCompletes.*;
 import gg.minecrush.epiccore.Commands.fly.FlyCommand;
 import gg.minecrush.epiccore.Commands.fly.FlySpeedCommand;
 import gg.minecrush.epiccore.Commands.gamemodes.*;
+import gg.minecrush.epiccore.Commands.spawn.SetSpawnCommand;
+import gg.minecrush.epiccore.Commands.spawn.SpawnCommand;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
@@ -132,6 +134,7 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("gmsp-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("gamemode-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("fly-command-permission"), "Update player flight mode", PermissionDefault.OP);
+
 
         // Automatic Events Register
 
