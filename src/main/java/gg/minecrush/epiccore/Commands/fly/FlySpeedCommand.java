@@ -52,7 +52,7 @@ public class FlySpeedCommand implements CommandExecutor {
             }
 
             float speed = 0F;
-            if (target.equals(((Player) sender))){
+            if (args.length == 1){
                 speed = Float.parseFloat(args[0]);
             } else {
                 speed = Float.parseFloat(args[1]);
