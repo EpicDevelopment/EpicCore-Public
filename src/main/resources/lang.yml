@@ -84,7 +84,7 @@ filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
 invalid-player: "&cThat player is invalid!"
 
 # Message for updating a player's speed
-updated-speed: "&aSet your %type% speed to %speed%"
+updated-speed: "&aSet %target%'s %type% speed to %speed%"
 
 # Message for invalid speed input
 invalid-speed: "&cInvalid speed, please pick a speed between 1 and 10"
