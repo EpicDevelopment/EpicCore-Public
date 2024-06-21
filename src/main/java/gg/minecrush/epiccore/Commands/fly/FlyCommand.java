@@ -32,7 +32,7 @@ public class FlyCommand implements CommandExecutor {
             Player player = (Player) sender;
             if (player.hasPermission(lang.getReplacedMessage("fly-command-permission"))) {
                 if (args.length == 0) {
-                    if (player.getAllowFlight() == false) {
+                    if (!player.isFlying()) {
                         player.setFlying(true);
                         player.sendMessage(lang.getReplacedMessage("flight-enabled-self").replace("%player%", player.getName()));
 
