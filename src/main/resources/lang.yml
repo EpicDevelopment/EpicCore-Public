@@ -22,9 +22,8 @@ announcements:
   - "%nl% &e&lANNOUNCEMENTS &8- &7Support our server with &b&n/vote&f %nl%"
 
 broadcast-format: "%nl% &e&lBROADCAST &8» &f%message% %nl%"
-broadcast-format-title: "&e&lSERVER BROADCAST"
-broadcast-format-subtitle: "&f%message%"
-broadcast-sound: Sound.BLOCK_BELL_RESONATE
+broadcast-title: "&e&lSERVER BROADCAST"
+broadcast-subtitle: "&f%message%"
 
 no-permission: "&cYou do not have permission to execute this command."
 
@@ -44,9 +43,9 @@ chat-cleared: "&aChat has been cleared!"
 
 discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
 
-chat-muted: "&cChat has been muted by %player%."
+chat-muted: "&cServer chat has been muted by %player%."
 
-chat-unmuted: "&aChat has been unmuted by %player%."
+chat-unmuted: "&aServer chat has been unmuted by %player%."
 
 chat-muted-message: "&cYou cannot speak right now as the chat is muted."
 
