@@ -66,10 +66,10 @@ public class FlySpeedCommand implements CommandExecutor {
             Player player = (Player) sender;
             if (player.isFlying()){
                 player.setFlySpeed(speed/10F);
-                player.sendMessage(lang.getReplacedMessage("updated-speed").replace("%type%", "flight").replace("%speed%", speed + ""));
+                player.sendMessage(lang.getReplacedMessage("updated-speed").replace("%type%", "flight").replace("%speed%", speed + "").replace("%target%", target.getName()));
             } else {
                 player.setWalkSpeed(speed/10F);
-                player.sendMessage(lang.getReplacedMessage("updated-speed").replace("%type%", "walk").replace("%speed%", speed + ""));
+                player.sendMessage(lang.getReplacedMessage("updated-speed").replace("%type%", "walk").replace("%speed%", speed + "").replace("%target%", target.getName()));
             }
         } catch (NumberFormatException e){
             sender.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/flyspeed"));
