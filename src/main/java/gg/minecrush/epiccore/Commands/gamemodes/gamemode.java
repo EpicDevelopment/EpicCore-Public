@@ -23,7 +23,7 @@ public class gamemode implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            if (args.length == 0 || args.length < 2){
+            if (args.length == 0 || args.length > 2){
                 sender.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gamemode"));
                 return false;
             }
