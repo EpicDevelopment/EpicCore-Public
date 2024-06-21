@@ -5,7 +5,10 @@ import gg.minecrush.epiccore.Async.AutoAnnouncements;
 import gg.minecrush.epiccore.Commands.*;
 import gg.minecrush.epiccore.Commands.TabCompletes.AdminCompletion;
 import gg.minecrush.epiccore.Commands.TabCompletes.ClearChatCompletion;
+import gg.minecrush.epiccore.Commands.TabCompletes.GamemodeCompletion;
 import gg.minecrush.epiccore.Commands.TabCompletes.ReportCompletion;
+import gg.minecrush.epiccore.Commands.fly.FlyCommand;
+import gg.minecrush.epiccore.Commands.fly.FlySpeedCommand;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemode;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemodeAdventure;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemodeCreative;
@@ -108,6 +111,9 @@ public final class EpicCore extends JavaPlugin {
         getCommand("gmsp").setExecutor(new gamemodeSpectator(lang, config));
         getCommand("gms").setExecutor(new gamemodeAdventure(lang, config));
         getCommand("gamemode").setExecutor(new gamemode(lang, config));
+        getCommand("gamemode").setTabCompleter(new GamemodeCompletion());
+        getCommand("fly").setExecutor(new FlyCommand(lang, config));
+        getCommand("flyspeed").setExecutor(new FlySpeedCommand(config, lang));
 
 
         // Event Registers
@@ -130,7 +136,7 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("gms-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("gmsp-command-permission"), "Update player gamemode", PermissionDefault.OP);
         registerPermission(config.getValue("gamemode-command-permission"), "Update player gamemode", PermissionDefault.OP);
-        registerPermission(config.getValue("fly-command-permission"), "Update player fly mode", PermissionDefault.OP);
+        registerPermission(config.getValue("fly-command-permission"), "Update player flight mode", PermissionDefault.OP);
 
         // Automatic Events Register
 
