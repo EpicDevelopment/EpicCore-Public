@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import static org.bukkit.Effect.Type.SOUND;
+
 public class MuteChatCommand implements CommandExecutor {
 
     private final JavaPlugin plugin;
@@ -43,6 +45,9 @@ public class MuteChatCommand implements CommandExecutor {
                     messageKey = "chat-unmuted";
                 }
                 String message = lang.getReplacedMessage(messageKey);
+                for(Player p : Bukkit.getOnlinePlayers()) {
+                    p.playSound(p.getLocation(), SOUND.BLOCK_ANVIL_DESTROY, 1, 2);
+                }
 
                 Bukkit.broadcastMessage(message.replace("%player%", sender.getName()));
 
