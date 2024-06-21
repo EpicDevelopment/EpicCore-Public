@@ -17,7 +17,7 @@ public class CoreExpansion extends  PlaceholderExpansion{
 
     @Override
     public String getAuthor() {
-        return "awel & snowyjs";
+        return "awel, snowyjs, & qeid";
     }
     @Override
     public String getIdentifier() {
