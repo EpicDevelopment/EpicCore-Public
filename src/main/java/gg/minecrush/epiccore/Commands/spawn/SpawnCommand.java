@@ -1,4 +1,4 @@
-package gg.minecrush.epiccore.Commands;
+package gg.minecrush.epiccore.Commands.spawn;
 
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
