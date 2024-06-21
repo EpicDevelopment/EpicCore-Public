@@ -51,3 +51,7 @@ commands:
   gamemode:
     usage: /gamemode <gamemode>
     description: Update your gamemode
+  fly:
+    usage: /fly [<player>]
+    aliases: flight
+    description: Update a players flight mode
