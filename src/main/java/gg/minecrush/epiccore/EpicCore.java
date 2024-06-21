@@ -8,6 +8,7 @@ import gg.minecrush.epiccore.Commands.TabCompletes.ClearChatCompletion;
 import gg.minecrush.epiccore.Commands.TabCompletes.GamemodeCompletion;
 import gg.minecrush.epiccore.Commands.TabCompletes.ReportCompletion;
 import gg.minecrush.epiccore.Commands.fly.FlyCommand;
+import gg.minecrush.epiccore.Commands.fly.FlySpeedCommand;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemode;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemodeAdventure;
 import gg.minecrush.epiccore.Commands.gamemodes.gamemodeCreative;
@@ -112,6 +113,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("gamemode").setExecutor(new gamemode(lang, config));
         getCommand("gamemode").setTabCompleter(new GamemodeCompletion());
         getCommand("fly").setExecutor(new FlyCommand(lang, config));
+        getCommand("flyspeed").setExecutor(new FlySpeedCommand(config, lang));
 
 
         // Event Registers
