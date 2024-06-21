@@ -4,10 +4,12 @@ import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Util.color;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.entity.Player;
 
 
 import java.util.List;
@@ -55,6 +57,10 @@ public class AutoAnnouncements {
                 }
                 String msg = newAnnouncements.get(new Random().nextInt(newAnnouncements.size()));
                 Bukkit.broadcastMessage(color.c(msg));
+                for(Player p : Bukkit.getOnlinePlayers()) {
+
+                    p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1.0F, 1.0F);
+                }
             }
         }.runTaskTimerAsynchronously(plugin, 45 * 20, 20 * autoAnnouncementsInterval);
     }
