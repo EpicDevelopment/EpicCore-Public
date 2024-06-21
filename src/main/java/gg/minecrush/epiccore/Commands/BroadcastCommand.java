@@ -4,6 +4,7 @@ import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Util.color;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -36,10 +37,10 @@ public class BroadcastCommand implements CommandExecutor {
         String messages = String.join(" ", Arrays.copyOfRange(args, 0, args.length));
         Bukkit.broadcastMessage(color.c(lang.getReplacedMessage("broadcast-format").replace("%message%", messages)));
         for(Player player : Bukkit.getOnlinePlayers()) {
-            player.playSound(player.getLocation(), lang.getReplacedMessage("broadcast-sound"), 1, 2);
+            player.playSound(player.getLocation(), Sound.BLOCK_BELL_RESONATE, 1, 2);
             player.sendTitle(lang
-                    .getReplacedMessage("broadcast-title"), lang
-                    .getReplacedMessage("broadcast-subtitle"), 1, 20, 1);
+                    .getReplacedMessage("broadcast-title").replace("%message%", messages), lang
+                    .getReplacedMessage("broadcast-subtitle").replace("%message%", messages), 15, 65, 15);
 
         }
 
