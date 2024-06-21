@@ -31,6 +31,16 @@ public class SpawnCommand implements CommandExecutor {
                 Player player = (Player) sender;
                 Location loc = player.getLocation();
 
+                try {
+                    if (plugin.getConfig().getString("spawn.location.world").isEmpty()){
+                        player.sendMessage(lang.getReplacedMessage("spawn-not-set"));
+                        return false;
+                    }
+                } catch (Exception e) {
+                    player.sendMessage(lang.getReplacedMessage("spawn-not-set"));
+                    return false;
+                }
+
                 new BukkitRunnable() {
                     int count = 0;
 
@@ -46,12 +56,12 @@ public class SpawnCommand implements CommandExecutor {
                         } else {
                             player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
 
-                            String worldName = config.getValue("spawn.location.world");
-                            double x = config.getValuedb("spawn.location.x");
-                            double y = config.getValuedb("spawn.location.y");
-                            double z = config.getValuedb("spawn.location.z");
-                            float pitch = (float) config.getValuedb("spawn.location.pitch");
-                            float yaw = (float) config.getValuedb("spawn.location.yaw");
+                            String worldName = plugin.getConfig().getString("spawn.location.world");
+                            double x = plugin.getConfig().getDouble("spawn.location.x");
+                            double y = plugin.getConfig().getDouble("spawn.location.y");
+                            double z = plugin.getConfig().getDouble("spawn.location.z");
+                            float pitch = (float) plugin.getConfig().getDouble("spawn.location.pitch");
+                            float yaw = (float) plugin.getConfig().getDouble("spawn.location.yaw");
                             World world = Bukkit.getWorld(worldName);
                             Location spawn = new Location(world, x, y, z, yaw, pitch);
                             player.teleport(spawn);
