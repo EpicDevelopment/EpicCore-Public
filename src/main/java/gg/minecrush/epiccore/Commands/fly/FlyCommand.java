@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 
 public class FlyCommand implements CommandExecutor {
 
-    Lang lang;
-    Config config;
+    private final Lang lang;
+    private final Config config;
 
     public FlyCommand(Lang lang, Config config) {
         this.lang = lang;
@@ -21,57 +21,57 @@ public class FlyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(color.c("&cConsole cannot execute this command!"));
+            return true;
+        }
 
-        if (sender instanceof Player) {
+        Player player = (Player) sender;
+        if (!player.hasPermission(config.getValue("fly-command-permission"))) {
+            player.sendMessage(lang.getReplacedMessage("no-permission"));
+            return true;
+        }
 
-            if (!sender.hasPermission(config.getValue("fly-command-permission"))) {
-                sender.sendMessage(lang.getReplacedMessage("no-permission"));
-                return false;
+        if (args.length == 0) {
+            toggleFlight(player, player);
+        } else {
+            Player target = Bukkit.getPlayer(args[0]);
+            if (target != null) {
+                toggleFlight(player, target);
+            } else {
+                player.sendMessage(lang.getReplacedMessage("invalid-player"));
             }
+        }
+        return true;
+    }
 
-            Player player = (Player) sender;
-            if (player.hasPermission(lang.getReplacedMessage("fly-command-permission"))) {
-                if (args.length == 0) {
-                    if (!player.isFlying()) {
-                        player.setFlying(true);
-                        player.sendMessage(lang.getReplacedMessage("flight-enabled-self").replace("%player%", player.getName()));
-
-                    } else {
-                        player.setFlying(false);
-                        player.sendMessage(lang.getReplacedMessage("flight-disabled-self").replace("%player%", player.getName()));
-                    }
-
-                } else {
-                    Player target = Bukkit.getPlayer(args[0]);
-                    if (target != null) {
-                        if (!target.isFlying()) {
-                            target.setAllowFlight(true);
-                            player.sendMessage(lang.getReplacedMessage("flight-enabled-other")
-                                    .replace("%target%", target.getName())
-                                    .replace("%player%", player.getName()));
-                            target.sendMessage(lang.getReplacedMessage("flight-enabled-target")
-                                    .replace("%target%", target.getName())
-                                    .replace("%player%", player.getName()));
-
-                        } else {
-                            target.setAllowFlight(false);
-                            player.sendMessage(lang.getReplacedMessage("flight-disabled-other")
-                                    .replace("%target%", target.getName())
-                                    .replace("%player%", player.getName()));
-                            target.sendMessage(lang.getReplacedMessage("flight-disabled-target")
-                                    .replace("%target%", target.getName())
-                                    .replace("%player%", player.getName()));
-                        }
-                    }else{
-                        player.sendMessage(lang.getReplacedMessage("invalid-player"));
-                    }
-
-                }
+    private void toggleFlight(Player executor, Player target) {
+        if (!target.getAllowFlight()) {
+            target.setAllowFlight(true);
+            target.setFlying(true);
+            if (executor.equals(target)) {
+                executor.sendMessage(lang.getReplacedMessage("flight-enabled-self").replace("%player%", executor.getName()));
+            } else {
+                executor.sendMessage(lang.getReplacedMessage("flight-enabled-other")
+                        .replace("%target%", target.getName())
+                        .replace("%player%", executor.getName()));
+                target.sendMessage(lang.getReplacedMessage("flight-enabled-target")
+                        .replace("%target%", target.getName())
+                        .replace("%player%", executor.getName()));
             }
         } else {
-            sender.sendMessage(color.c("&cConsole cannot execute this command!"));
+            target.setAllowFlight(false);
+            target.setFlying(false);
+            if (executor.equals(target)) {
+                executor.sendMessage(lang.getReplacedMessage("flight-disabled-self").replace("%player%", executor.getName()));
+            } else {
+                executor.sendMessage(lang.getReplacedMessage("flight-disabled-other")
+                        .replace("%target%", target.getName())
+                        .replace("%player%", executor.getName()));
+                target.sendMessage(lang.getReplacedMessage("flight-disabled-target")
+                        .replace("%target%", target.getName())
+                        .replace("%player%", executor.getName()));
+            }
         }
-    return true;
     }
 }
-
