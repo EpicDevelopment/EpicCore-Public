@@ -17,8 +17,7 @@ public class ReportCompletion implements TabCompleter {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 completions.add(player.getName());
             }
-            return completions;
         }
-        return null;
+        return completions;
     }
 }
