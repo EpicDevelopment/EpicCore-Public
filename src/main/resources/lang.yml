@@ -21,7 +21,9 @@ announcements:
   - "%nl% &e&lANNOUNCEMENTS &8- &7You can get rewards from joining our discord!%nl%"
   - "%nl% &e&lANNOUNCEMENTS &8- &7Support our server with &b&n/vote&f %nl%"
 
-broadcast-format: "%nl% &e&lBROADCAST &8» &f%message%"
+broadcast-format: "%nl% &e&lBROADCAST &8» &f%message% %nl%"
+broadcast-format-title: "&e&lSERVER BROADCAST"
+broadcast-format-subtitle: "&f%message%"
 
 no-permission: "&cYou do not have permission to execute this command."
 
@@ -47,7 +49,7 @@ chat-muted-message: "&cYou cannot speak right now as the chat is muted."
 
 invalid-characters: "&cYour message contains invalid characters."
 
-invalid-arguments: "&cYour command contains invalid arguments. %invalid-arguments% "
+invalid-arguments: "&cYour command contains invalid arguments. %invalid-arguments%"
 
 updated-gamemode: "&eUpdated your gamemode to %gamemode%"
 
