@@ -14,12 +14,11 @@ public class FlySpeedCompletion implements TabCompleter {
         if (args.length == 1) {
             completions.add("<speed>");
             completions.add("<player>");
-            return completions;
         }
 
         if (args.length == 2) {
             completions.add("<speed>");
         }
-        return null;
+        return completions;
     }
 }
