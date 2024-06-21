@@ -2,6 +2,7 @@ package gg.minecrush.epiccore.Commands.fly;
 
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.Util.color;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,7 +13,8 @@ public class FlyCommand implements CommandExecutor {
 
     Lang lang;
     Config config;
-    public FlyCommand(Lang lang, Config config){
+
+    public FlyCommand(Lang lang, Config config) {
         this.lang = lang;
         this.config = config;
     }
@@ -22,7 +24,7 @@ public class FlyCommand implements CommandExecutor {
 
         if (sender instanceof Player) {
 
-            if (!sender.hasPermission(config.getValue("fly-command-permission"))){
+            if (!sender.hasPermission(config.getValue("fly-command-permission"))) {
                 sender.sendMessage(lang.getReplacedMessage("no-permission"));
                 return false;
             }
@@ -39,7 +41,7 @@ public class FlyCommand implements CommandExecutor {
                         player.sendMessage(lang.getReplacedMessage("flight-disabled-self").replace("%player%", player.getName()));
                     }
 
-                }else{
+                } else {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         if (target.getAllowFlight() == false) {
@@ -62,12 +64,11 @@ public class FlyCommand implements CommandExecutor {
                         player.sendMessage(lang.getReplacedMessage("player-doesnt-exist"));
                     }
                 }
-
             }
-        }else{
-            sender.sendMessage("Console cannot execute this command!");
+        } else {
+            sender.sendMessage(color.c("&cConsole cannot execute this command!"));
         }
-        return false;
+    return true;
     }
-
 }
+
