@@ -47,7 +47,13 @@ chat-muted-message: "&cYou cannot speak right now as the chat is muted."
 
 invalid-characters: "&cYour message contains invalid characters."
 
+invalid-arguments: "&cYour command contains invalid arguments. %invalid-arguments% "
+
+updated-gamemode: "&eUpdated your gamemode to %gamemode%"
+
 filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
+
+player-doesnt-exist: "&cThis player does not exist."
 
 reloaded: "&aReloaded the Filter, Config & Messages data (in %time%ms)"
 
