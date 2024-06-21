@@ -29,12 +29,15 @@ public class BroadcastCommand implements CommandExecutor {
         }
 
         if (args.length == 0) {
-            sender.sendMessage(lang.getReplacedMessage(color.c("&cInvalid arguments: /broadcast")));
+            sender.sendMessage(color.c("&cInvalid arguments: /broadcast <text>"));
             return false;
         }
 
         String messages = String.join(" ", Arrays.copyOfRange(args, 0, args.length));
         Bukkit.broadcastMessage(color.c(lang.getReplacedMessage("broadcast-format").replace("%message%", messages)));
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            player.playSound(player.getLocation(), Sound.);
+        }
 
         return true;
     }
