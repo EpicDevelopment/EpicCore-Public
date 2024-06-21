@@ -49,20 +49,22 @@ public class FlyCommand implements CommandExecutor {
                             player.sendMessage(lang.getReplacedMessage("flight-enabled-other")
                                     .replace("%target%", target.getName())
                                     .replace("%player%", player.getName()));
-
-                        }else{
+                            target.sendMessage(lang.getReplacedMessage("flight-enabled-target")
+                                    .replace("%target%", target.getName())
+                                    .replace("%player%", player.getName()));
+                        } else {
                             target.setFlying(false);
                             player.sendMessage(lang.getReplacedMessage("flight-disabled-other")
                                     .replace("%target%", target.getName())
                                     .replace("%player%", player.getName()));
+                            target.sendMessage(lang.getReplacedMessage("flight-disabled-target")
+                                    .replace("%target%", target.getName())
+                                    .replace("%player%", player.getName()));
                         }
-                        targ.sendMessage(lang.getReplacedMessage("flight-disabled-other")
-                                .replace("%target%", target.getName())
-                                .replace("%player%", player.getName()));
+                    }else{
+                        player.sendMessage(lang.getReplacedMessage("invalid-player"));
                     }
-                    } else {
-                        player.sendMessage(lang.getReplacedMessage("player-doesnt-exist"));
-                    }
+
                 }
             }
         } else {
