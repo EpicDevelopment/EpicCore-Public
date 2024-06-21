@@ -3,6 +3,7 @@ package gg.minecrush.epiccore.Commands.gamemodes;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Util.color;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,11 +27,21 @@ public class gamemodeAdventure implements CommandExecutor {
                 sender.sendMessage(lang.getReplacedMessage("no-permission"));
                 return false;
             }
+            Player target = null;
+            if (args.length == 1) {
+                target = Bukkit.getPlayer(args[0]);
+                if (target == null) {
+                    sender.sendMessage(lang.getReplacedMessage("invalid-player"));
+                    return false;
+                }
+            } else if (args.length == 0){
+                target = (Player) sender;
+            }
 
             Player player = (Player) sender;
-            if (args.length == 0) {
+            if (args.length == 0 || args.length == 1) {
                 player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "adventure"));
-                player.setGameMode(GameMode.ADVENTURE);
+                target.setGameMode(GameMode.ADVENTURE);
             } else {
                 player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gma"));
             }
