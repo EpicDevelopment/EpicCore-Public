@@ -40,7 +40,7 @@ public class gamemodeSurvival implements CommandExecutor {
 
             Player player = (Player) sender;
             if (args.length == 0 || args.length == 1) {
-                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "survival"));
+                player.sendMessage(lang.getReplacedMessage("updated-gamemode").replace("%gamemode%", "survival").replace("%player%", target.getName()));
                 target.setGameMode(GameMode.SURVIVAL);
             } else {
                 player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/gms"));
