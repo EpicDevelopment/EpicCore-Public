@@ -10,48 +10,41 @@ website: https://snowyjs.lol
 commands:
   spawn:
     description: Teleport yourself or others to spawn
-    usage: /spawn [<target>]
+    usage: spawn [target]
   setspawn:
     description: Set the spawn location for the server.
-    usage: /setspawn
   report:
     description: Report other players for violations if the second argument is not fulfilled a gui with options will be shown.
-    usage: /report <target> [<reason>]
+    usage: report <target> [reason]
   discord:
     description: Use this command to join the discord server
-    usage: /discord
   clearchat:
     description: Use this command to clear chat if there has been spam or any blacklisted words option for the first argument is how many blank lines to send
-    aliases: /cc
-    usage: /clearchat [<int>]
+    aliases: cc
+    usage: clearchat [integer]
   epiccore:
     description: Admin command to view the configuration for EpicCore
     aliases: epicadmin
-    usage: /epiccore
+    usage: epiccore
   mutechat:
     description: Admin mutechat command
-    aliases: chatmtue
-    usage: /mutechat
+    aliases: chatmute
   broadcast:
     description: Broadcast messages to all online players!
-    aliases: bc
-    usage: /broadcast
   gmc:
-    usage: /gmc
     description: Gamemode creative command
   gma:
-    usage: /gma
     description: Gamemode adventure command
   gmsp:
-    usage: /gmsp
     description: Gamemode spectator command
   gms:
-    usage: /gms
     description: Gamemode survival command
   gamemode:
-    usage: /gamemode <gamemode>
     description: Update your gamemode
   fly:
-    usage: /fly [<player>]
+    usage: fly [player]
     aliases: flight
-    description: Update a players flight mode
+    description: Toggle yours or another player's flight mode.
+  flyspeed:
+    description: Update a players movement speed
+    aliases: walkspeed
