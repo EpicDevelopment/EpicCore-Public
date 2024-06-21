@@ -24,6 +24,7 @@ announcements:
 broadcast-format: "%nl% &e&lBROADCAST &8» &f%message% %nl%"
 broadcast-format-title: "&e&lSERVER BROADCAST"
 broadcast-format-subtitle: "&f%message%"
+broadcast-sound: Sound.BLOCK_BELL_RESONATE
 
 no-permission: "&cYou do not have permission to execute this command."
 
