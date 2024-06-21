@@ -35,17 +35,20 @@ public class ChatListener implements Listener {
     public void onChat(AsyncPlayerChatEvent e){
         Player player = e.getPlayer();
         String message = e.getMessage();
-        String format = lang.getMessages("chat-format")
-                .replace("%player%", player.getName())
-                .replace("%message%", message);
 
-        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            format = PlaceholderAPI.setPlaceholders(player, format);
+        if (config.getValueBoolean("format-chat")){
+            String format = lang.getMessages("chat-format")
+                    .replace("%player%", player.getName())
+                    .replace("%message%", message);
+
+            if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+                format = PlaceholderAPI.setPlaceholders(player, format);
+            }
+
+            format = color.c(convertChatFormat(format));
+
+            e.setFormat(format);
         }
-
-        format = color.c(convertChatFormat(format));
-
-        e.setFormat(format);
 
         for (String bannedWord : filter.getBannedWords()) {
             if (message.toLowerCase().contains(bannedWord.toLowerCase())) {
