@@ -37,6 +37,6 @@ public class gamemodeSurvival implements CommandExecutor {
         } else {
             sender.sendMessage(color.c("&cConsole cannot execute this command!"));
         }
-        return false;
+        return true;
     }
 }
