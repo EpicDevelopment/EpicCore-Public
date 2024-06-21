@@ -21,6 +21,12 @@ admin-command-permission: "epiccore.manage.admin"
 broadcast-command-permission: "epiccore.chat.broadcast"
 mutechat-command-permission: "epiccore.chat.mutechat"
 setspawn-command-permission: "epiccore.manage.spawn"
+gma-command-permission: "epiccore.gamemode.adventure"
+gms-command-permission: "epiccore.gamemode.survival"
+gmsp-command-permission: "epiccore.gamemode.spectator"
+gmc-command-permission: "epiccore.gamemode.creative"
+gamemode-command-permission: "epiccore.gamemode"
+fly-command-permission: "epiccore.fly"
 
 automatic-announcements: true
 
