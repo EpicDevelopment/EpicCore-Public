@@ -17,9 +17,8 @@ public class FlyCompletion implements TabCompleter {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 completions.add(player.getName());
             }
-            return completions;
         }
-        return null;
+        return completions;
     }
 
 }
