@@ -45,6 +45,3 @@ commands:
     usage: fly [player]
     aliases: flight
     description: Toggle yours or another player's flight mode.
-  flyspeed:
-    description: Update a players movement speed
-    aliases: walkspeed
