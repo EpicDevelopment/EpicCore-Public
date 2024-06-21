@@ -53,9 +53,20 @@ updated-gamemode: "&eUpdated your gamemode to %gamemode%"
 
 filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
 
-player-doesnt-exist: "&cThis player does not exist."
+invalid-player: "&cThat player is invalid!"
+
+updated-speed: "&aSet your %type% speed to %speed%"
+
+invalid-speed: "&cInvalid speed, please pick a speed between 1 and 10"
 
 reloaded: "&aReloaded the Filter, Config & Messages data (in %time%ms)"
+
+flight-enabled-self: "&aYour flight mode has been enabled."
+flight-disabled-self: "&cYour flight mode has been disabled."
+flight-enabled-other: "&aYou enabled %target%'s flight mode."
+flight-enabled-target: "&aYour flight mode has been enabled."
+flight-disabled-other: "&cYou disabled %target%'s flight mode."
+flight-disabled-target: "&cYour flight mode has been disabled."
 
 report-broadcast: |
   &f 
