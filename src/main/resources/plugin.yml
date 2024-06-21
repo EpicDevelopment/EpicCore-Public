@@ -30,6 +30,7 @@ commands:
     description: Admin mutechat command
     aliases: chatmute
   broadcast:
+    aliases: bc
     description: Broadcast messages to all online players!
   gmc:
     description: Gamemode creative command
