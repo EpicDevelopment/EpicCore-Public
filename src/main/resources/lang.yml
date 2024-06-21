@@ -12,66 +12,103 @@
 #         |   | ,'    \   \ .'                         \   \  /
 #         `----'       `---`                            `----'
 
+# Prefix for the plugin messages
 prefix: '<##F69536>&lCore &8→&r'
 
-# Player chat message format (Unregisted placeholders will cause issues)
+# Player chat message format (Unregistered placeholders will cause issues)
 chat-format: "%luckperms_prefix%%player% &8» &f%message%"
 
+# Announcement messages that will be displayed to players every x seconds.
 announcements:
   - "%nl% &e&lANNOUNCEMENTS &8- &7You can get rewards from joining our discord!%nl%"
   - "%nl% &e&lANNOUNCEMENTS &8- &7Support our server with &b&n/vote&f %nl%"
 
+# Format for broadcast messages
 broadcast-format: "%nl% &e&lBROADCAST &8» &f%message% %nl%"
+
+# Title for broadcast messages
 broadcast-title: "&e&lSERVER BROADCAST"
+
+# Subtitle for broadcast messages
 broadcast-subtitle: "&f%message%"
 
+# Message for when a player does not have permission to execute a command
 no-permission: "&cYou do not have permission to execute this command."
 
+# Message for countdown to spawn teleport
 spawn-teleporting-in-seconds: '&aTeleporting to spawn in %delay%'
 
+# Message when a player is teleported to spawn
 spawn-teleported: "&aYou have been teleported to spawn"
 
+# Message when spawn teleport is canceled due to movement
 spawn-teleporting-canceled: "&cSpawn teleport canceled due to movement"
 
+# Message when spawn location is set
 spawn-set: "&aSpawn location has been set successfully!"
 
+# Message when there is no valid spawn location set
 spawn-not-set: "&cThere is no valid spawn."
 
+# Message for entering an invalid number
 invalid-number: "&cPlease enter a valid number."
 
+# Message for when chat is cleared
 chat-cleared: "&aChat has been cleared!"
 
+# Link to the Discord server
 discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
 
+# Message when server chat is muted
 chat-muted: "&cServer chat has been muted by %player%."
 
+# Message when server chat is unmuted
 chat-unmuted: "&aServer chat has been unmuted by %player%."
 
+# Message when a player tries to chat while chat is muted
 chat-muted-message: "&cYou cannot speak right now as the chat is muted."
 
+# Message for when a player uses invalid characters in chat
 invalid-characters: "&cYour message contains invalid characters."
 
+# Message for when a command contains invalid arguments
 invalid-arguments: "&cYour command contains invalid arguments. %invalid-arguments%"
 
+# Message for updating a player's gamemode
 updated-gamemode: "&eUpdated %player%'s gamemode to %gamemode%"
 
+# Message for filter report
 filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
 
+# Message for invalid player
 invalid-player: "&cThat player is invalid!"
 
+# Message for updating a player's speed
 updated-speed: "&aSet your %type% speed to %speed%"
 
+# Message for invalid speed input
 invalid-speed: "&cInvalid speed, please pick a speed between 1 and 10"
 
+# Message for reloading configurations
 reloaded: "&aReloaded the Filter, Config & Messages data (in %time%ms)"
 
+# Message for opening inventory (For Invsee & /ec)
+opening-inventory: "&aOpening inventory!"
+
+# Messages related to flight mode
 flight-enabled-self: "&aYour flight mode has been enabled."
+
 flight-disabled-self: "&cYour flight mode has been disabled."
+
 flight-enabled-other: "&aYou enabled %target%'s flight mode."
+
 flight-enabled-target: "&aYour flight mode has been enabled."
+
 flight-disabled-other: "&cYou disabled %target%'s flight mode."
+
 flight-disabled-target: "&cYour flight mode has been disabled."
 
+# Message format for report broadcast
 report-broadcast: |
   &f 
   &3&lREPORT
@@ -81,6 +118,7 @@ report-broadcast: |
   &7Reason: &3%reason%
   &f
 
+# Help command message for EpicCore
 epiccore-help: |
   &7&m                                                      &f
   &f
@@ -91,4 +129,5 @@ epiccore-help: |
   &f
   &7&m                                                      &f
 
+# Message for successfully reporting an issue
 report-reported-success: "&aThanks for submitting your %reason% report. We understand your concerns and it will be reviewed as soon as possible."
