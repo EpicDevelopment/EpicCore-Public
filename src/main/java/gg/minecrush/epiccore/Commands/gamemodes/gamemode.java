@@ -63,7 +63,7 @@ public class gamemode implements CommandExecutor {
         } else {
             sender.sendMessage(color.c("&cConsole cannot execute this command!"));
         }
-        return false;
+        return true;
     }
 
     private void gamemodeAdventure(Player player){
