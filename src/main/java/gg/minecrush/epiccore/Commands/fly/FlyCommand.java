@@ -44,7 +44,7 @@ public class FlyCommand implements CommandExecutor {
                 } else {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
-                        if (target.getAllowFlight() == false) {
+                        if (target.isFlying() == false) {
                             target.setFlying(true);
                             player.sendMessage(lang.getReplacedMessage("flight-enabled-other")
                                     .replace("%target%", target.getName())
@@ -52,6 +52,7 @@ public class FlyCommand implements CommandExecutor {
                             target.sendMessage(lang.getReplacedMessage("flight-enabled-target")
                                     .replace("%target%", target.getName())
                                     .replace("%player%", player.getName()));
+
                         } else {
                             target.setFlying(false);
                             player.sendMessage(lang.getReplacedMessage("flight-disabled-other")
