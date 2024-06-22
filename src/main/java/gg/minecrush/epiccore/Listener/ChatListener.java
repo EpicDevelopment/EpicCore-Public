@@ -38,12 +38,12 @@ public class ChatListener implements Listener {
 
         if (config.getValueBoolean("format-chat")) {
             String format = lang.getMessages("chat-format")
-                    .replace("{PLAYER}", player.getName())
-                    .replace("{MESSAGE}", message);
+                    .replace("{PLAYER}", player.getName());
 
             if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
                 format = PlaceholderAPI.setPlaceholders(player, format);
             }
+            format = format.replace("{MESSAGE}", message);
             format = color.c(convertChatFormat(format));
 
             e.setFormat(format);
