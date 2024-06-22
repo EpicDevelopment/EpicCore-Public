@@ -10,12 +10,14 @@ import gg.minecrush.epiccore.Commands.gamemodes.*;
 import gg.minecrush.epiccore.Commands.inventory.EnderchestCommand;
 import gg.minecrush.epiccore.Commands.TabCompletes.DefaultCompletion;
 import gg.minecrush.epiccore.Commands.inventory.InvseeCommand;
-import gg.minecrush.epiccore.Commands.spawn.SetSpawnCommand;
-import gg.minecrush.epiccore.Commands.spawn.SpawnCommand;
+import gg.minecrush.epiccore.Commands.teleportation.WarpsCommand;
+import gg.minecrush.epiccore.Commands.teleportation.spawn.SetSpawnCommand;
+import gg.minecrush.epiccore.Commands.teleportation.spawn.SpawnCommand;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.DataStorage.yaml.Warps;
 import gg.minecrush.epiccore.GUI.ReportGUI;
 import gg.minecrush.epiccore.Listener.ChatListener;
 import gg.minecrush.epiccore.Listener.MuteChatListener;
@@ -34,6 +36,7 @@ public final class EpicCore extends JavaPlugin {
     private Filter filter;
     private ChatManager chatManager;
     private AutoAnnouncements autoAnnouncements;
+    private Warps warps;
 
 
     @Override
@@ -49,6 +52,17 @@ public final class EpicCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
         this.config = new Config(this);
+
+        try {
+            File configFiles = new File(getDataFolder(), "warps.yml");
+            if (!configFiles.exists()) {
+                saveResource("warps.yml", false);
+            }
+        } catch (Exception e) {
+            getLogger().severe("[EpicCore] Failed to create warps file");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        this.warps = new Warps(this);
 
         try {
             File msgFile = new File(getDataFolder(), "lang.yml");
@@ -93,8 +107,8 @@ public final class EpicCore extends JavaPlugin {
 
         // Command Registers
 
-        getCommand("spawn").setExecutor(new SpawnCommand(this, lang, config));
-        getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang, config));
+        getCommand("spawn").setExecutor(new SpawnCommand(this, lang, config, warps));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang, config, warps));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang, config));
         getCommand("clearchat").setTabCompleter(new ClearChatCompletion());
         getCommand("discord").setExecutor(new DiscordCommand(this, lang, config));
@@ -127,6 +141,8 @@ public final class EpicCore extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand(config, lang));
         getCommand("feed").setTabCompleter(new DefaultCompletion());
 
+        getCommand("warp").setExecutor(new WarpsCommand(lang, warps, config, this));
+
 
 
         // Event Registers
@@ -157,6 +173,7 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         registerPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         registerPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        registerPermission(config.getValue("warps-manage-command-permission"), "Heal and feed another player", PermissionDefault.OP);
 
 
         // Automatic Events Register
@@ -199,5 +216,6 @@ public final class EpicCore extends JavaPlugin {
         unregisterPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         unregisterPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         unregisterPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        unregisterPermission(config.getValue("warps-manage-command-permission"), "Heal and feed another player", PermissionDefault.OP);
     }
 }
