@@ -26,7 +26,7 @@ public class HealCommand implements CommandExecutor {
             return false;
         }
 
-        if (!sender.hasPermission(config.getValue("admin-command-permission"))){
+        if (!sender.hasPermission(config.getValue("heal-command-permission"))){
             sender.sendMessage(lang.getReplacedMessage("no-permission"));
             return false;
         }
@@ -40,6 +40,10 @@ public class HealCommand implements CommandExecutor {
 
         Player target = null;
         if (args.length == 1) {
+            if (!player.hasPermission(config.getValue("heal-others-command-permission"))){
+                sender.sendMessage(lang.getReplacedMessage("no-permission"));
+                return false;
+            }
             target = Bukkit.getPlayer(args[0]);
         } else {
             target = player;
