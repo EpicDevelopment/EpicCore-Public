@@ -1,7 +1,8 @@
-package gg.minecrush.epiccore.Commands.spawn;
+package gg.minecrush.epiccore.Commands.teleportation.spawn;
 
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
+import gg.minecrush.epiccore.DataStorage.yaml.Warps;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -12,16 +13,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Objects;
+
 public class SpawnCommand implements CommandExecutor {
 
     private final Lang lang;
     private final JavaPlugin plugin;
     private final Config config;
+    private final Warps warps;
 
-    public SpawnCommand(JavaPlugin plugin, Lang lang, Config config) {
+    public SpawnCommand(JavaPlugin plugin, Lang lang, Config config, Warps warps) {
         this.plugin = plugin;
         this.lang = lang;
         this.config = config;
+        this.warps = warps;
     }
 
     @Override
@@ -46,22 +51,22 @@ public class SpawnCommand implements CommandExecutor {
 
                     @Override
                     public void run() {
-                        if (count < 5) {
-                            player.sendMessage(lang.getReplacedMessage("spawn-teleporting-in-seconds").replace("%delay%", 5 - count + ""));
+                        if (count < config.getValueInt("teleport-delay")) {
+                            player.sendMessage(lang.getReplacedMessage("warp-teleporting-in-seconds").replace("%warp%", "spawn").replace("%delay%", 5 - count + ""));
                             count++;
-                            if (!loc.equals(player.getLocation())) {
-                                player.sendMessage(lang.getReplacedMessage("spawn-teleporting-canceled"));
+                            if (!Objects.equals(formatWithString(loc), formatWithString(player.getLocation()))) {
+                                player.sendMessage(lang.getReplacedMessage("warp-teleporting-canceled").replace("%warp%", "spawn"));
                                 cancel();
                             }
                         } else {
-                            player.sendMessage(lang.getReplacedMessage("spawn-teleported"));
+                            player.sendMessage(lang.getReplacedMessage("warp-teleported").replace("%warp%", "spawn"));
 
-                            String worldName = plugin.getConfig().getString("spawn.location.world");
-                            double x = plugin.getConfig().getDouble("spawn.location.x");
-                            double y = plugin.getConfig().getDouble("spawn.location.y");
-                            double z = plugin.getConfig().getDouble("spawn.location.z");
-                            float pitch = (float) plugin.getConfig().getDouble("spawn.location.pitch");
-                            float yaw = (float) plugin.getConfig().getDouble("spawn.location.yaw");
+                            String worldName = warps.getValue("spawn.location.world");
+                            double x = warps.getValuedb("spawn.location.x");
+                            double y = warps.getValuedb("spawn.location.y");
+                            double z = warps.getValuedb("spawn.location.z");
+                            float pitch = (float) warps.getValuedb("spawn.location.pitch");
+                            float yaw = (float) warps.getValuedb("spawn.location.yaw");
                             World world = Bukkit.getWorld(worldName);
                             Location spawn = new Location(world, x, y, z, yaw, pitch);
                             player.teleport(spawn);
@@ -74,5 +79,12 @@ public class SpawnCommand implements CommandExecutor {
             }
         }
         return true;
+    }
+
+    public String formatWithString(Location loc){
+        String x = loc.getX() + "";
+        String y = loc.getY() + "";
+        String z = loc.getZ() + "";
+        return x + "-" + y + "-" + z;
     }
 }
