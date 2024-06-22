@@ -8,7 +8,7 @@ import gg.minecrush.epiccore.Commands.fly.FlyCommand;
 import gg.minecrush.epiccore.Commands.fly.FlySpeedCommand;
 import gg.minecrush.epiccore.Commands.gamemodes.*;
 import gg.minecrush.epiccore.Commands.inventory.EnderchestCommand;
-import gg.minecrush.epiccore.Commands.inventory.InventoryCompletion;
+import gg.minecrush.epiccore.Commands.TabCompletes.DefaultCompletion;
 import gg.minecrush.epiccore.Commands.inventory.InvseeCommand;
 import gg.minecrush.epiccore.Commands.spawn.SetSpawnCommand;
 import gg.minecrush.epiccore.Commands.spawn.SpawnCommand;
@@ -118,8 +118,14 @@ public final class EpicCore extends JavaPlugin {
 
         getCommand("enderchest").setExecutor(new EnderchestCommand(lang, config));
         getCommand("invsee").setExecutor(new InvseeCommand(lang, config));
-        getCommand("enderchest").setTabCompleter(new InventoryCompletion());
-        getCommand("invsee").setTabCompleter(new InventoryCompletion());
+        getCommand("enderchest").setTabCompleter(new DefaultCompletion());
+        getCommand("invsee").setTabCompleter(new DefaultCompletion());
+
+        getCommand("heal").setExecutor(new HealCommand(config, lang));
+        getCommand("heal").setTabCompleter(new DefaultCompletion());
+
+        getCommand("feed").setExecutor(new FeedCommand(config, lang));
+        getCommand("feed").setTabCompleter(new DefaultCompletion());
 
 
 
@@ -147,6 +153,10 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("invsee-command-permission"), "View players inventory", PermissionDefault.OP);
         registerPermission(config.getValue("enderchest-command-permission"), "View players inventory", PermissionDefault.OP);
         registerPermission(config.getValue("enderchest-other-command-permission"), "View players inventory", PermissionDefault.OP);
+        registerPermission(config.getValue("heal-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
+        registerPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        registerPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
+        registerPermission(config.getValue("feed-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
 
 
         // Automatic Events Register
@@ -185,5 +195,9 @@ public final class EpicCore extends JavaPlugin {
         unregisterPermission(config.getValue("invsee-command-permission"), "View players inventory", PermissionDefault.OP);
         unregisterPermission(config.getValue("enderchest-command-permission"), "View players inventory", PermissionDefault.OP);
         unregisterPermission(config.getValue("enderchest-other-command-permission"), "View players inventory", PermissionDefault.OP);
+        unregisterPermission(config.getValue("heal-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
+        unregisterPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        unregisterPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
+        unregisterPermission(config.getValue("feed-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
     }
 }
