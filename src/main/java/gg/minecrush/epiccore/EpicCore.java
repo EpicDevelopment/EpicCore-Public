@@ -156,7 +156,7 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("heal-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         registerPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         registerPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
-        registerPermission(config.getValue("feed-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        registerPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
 
 
         // Automatic Events Register
@@ -198,6 +198,6 @@ public final class EpicCore extends JavaPlugin {
         unregisterPermission(config.getValue("heal-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         unregisterPermission(config.getValue("heal-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         unregisterPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
-        unregisterPermission(config.getValue("feed-other-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        unregisterPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
     }
 }
