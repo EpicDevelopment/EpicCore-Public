@@ -15,13 +15,11 @@ commands:
     description: Set the spawn location for the server.
   report:
     description: Report other players for violations if the second argument is not fulfilled a gui with options will be shown.
-    usage: report <target> [reason]
   discord:
     description: Use this command to join the discord server
   clearchat:
     description: Use this command to clear chat if there has been spam or any blacklisted words option for the first argument is how many blank lines to send
     aliases: cc
-    usage: clearchat [integer]
   epiccore:
     description: Admin command to view the configuration for EpicCore
     aliases: epicadmin
