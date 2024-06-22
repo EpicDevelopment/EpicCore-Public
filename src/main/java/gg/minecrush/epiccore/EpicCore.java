@@ -10,9 +10,10 @@ import gg.minecrush.epiccore.Commands.gamemodes.*;
 import gg.minecrush.epiccore.Commands.inventory.EnderchestCommand;
 import gg.minecrush.epiccore.Commands.TabCompletes.DefaultCompletion;
 import gg.minecrush.epiccore.Commands.inventory.InvseeCommand;
-import gg.minecrush.epiccore.Commands.teleportation.WarpsCommand;
+import gg.minecrush.epiccore.Commands.teleportation.warps.WarpCommand;
 import gg.minecrush.epiccore.Commands.teleportation.spawn.SetSpawnCommand;
 import gg.minecrush.epiccore.Commands.teleportation.spawn.SpawnCommand;
+import gg.minecrush.epiccore.Commands.teleportation.warps.WarpsCommand;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
@@ -141,7 +142,9 @@ public final class EpicCore extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand(config, lang));
         getCommand("feed").setTabCompleter(new DefaultCompletion());
 
-        getCommand("warp").setExecutor(new WarpsCommand(lang, warps, config, this));
+        getCommand("warp").setExecutor(new WarpCommand(lang, warps, config, this));
+        getCommand("warps").setExecutor(new WarpsCommand(lang, warps, config, this));
+        getCommand("warps").setTabCompleter(new WarpsCompletion(warps));
 
 
 
