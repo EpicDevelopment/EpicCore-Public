@@ -34,7 +34,7 @@ public class FeedCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length > 1) {
-            player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/heal"));
+            player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/feed"));
             return false;
         }
 
