@@ -15,7 +15,18 @@
 # Enable or disable chat formating
 format-chat: true
 
+# Teleport information
+
+teleport-delay: 5 # Set it to 0 to disable delay
+
 # Permissions for various commands and functionalities
+
+# Permission to create & delete warps
+warps-manage-command-permission: "epiccore.manage.warps"
+
+# Permission for warping
+
+warps-command-permission: "epiccore.warps" # Example epiccore.warps.test = test warp
 
 # Permission to chat as staff
 staff-permission: "epiccore.staff.chat"
