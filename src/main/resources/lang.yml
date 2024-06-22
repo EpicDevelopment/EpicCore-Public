@@ -48,7 +48,7 @@ invalid-number: "&cPlease enter a valid number."
 chat-cleared: "&aChat has been cleared!"
 
 # Link to the Discord server
-discord-link: "&fJoin our Discord server: &bhttps://discord.gg/ignify"
+discord-link: "&fJoin our Discord server: &bhttps://discord.gg/YourServer"
 
 # Message when server chat is muted
 chat-muted: "&cServer chat has been muted by %player%."
