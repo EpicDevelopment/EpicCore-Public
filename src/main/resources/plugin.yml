@@ -6,7 +6,8 @@ authors:
   - snowy
   - awel
   - jayden
-website: https://snowyjs.lol
+  - eric
+website: https://store.minecrush.gg
 commands:
   spawn:
     description: Teleport yourself or others to spawn
@@ -56,3 +57,6 @@ commands:
     aliases: ec
   heal:
     description: Heal yourself or heal a player
+  feed:
+    description: Feed yourself or another person
+    aliases: stuff
