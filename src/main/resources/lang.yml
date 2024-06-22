@@ -50,6 +50,9 @@ spawn-set: "&aSpawn location has been set successfully!"
 # Message when there is no valid spawn location set
 spawn-not-set: "&cThere is no valid spawn."
 
+# Heal & Feed a player!
+healed-player: "&aFully healed %target%"
+
 # Message for entering an invalid number
 invalid-number: "&cPlease enter a valid number."
 
