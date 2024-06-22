@@ -58,3 +58,6 @@ commands:
   feed:
     description: Feed yourself or another person
     aliases: stuff
+  warps:
+    description: Manage, teleport and list warps!
+    aliases: warp
