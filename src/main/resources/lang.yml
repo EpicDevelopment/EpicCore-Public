@@ -16,7 +16,7 @@
 prefix: '<##F69536>&lCore &8→&r'
 
 # Player chat message format (Unregistered placeholders will cause issues)
-chat-format: "%luckperms_prefix%%player% &8» &f%message%"
+chat-format: "%luckperms_prefix%{PLAYER} &8» &f{MESSAGE}"
 
 # Announcement messages that will be displayed to players every x seconds.
 announcements:
@@ -34,21 +34,6 @@ broadcast-subtitle: "&f%message%"
 
 # Message for when a player does not have permission to execute a command
 no-permission: "&cYou do not have permission to execute this command."
-
-# Message for countdown to spawn teleport
-spawn-teleporting-in-seconds: '&aTeleporting to spawn in %delay%'
-
-# Message when a player is teleported to spawn
-spawn-teleported: "&aYou have been teleported to spawn"
-
-# Message when spawn teleport is canceled due to movement
-spawn-teleporting-canceled: "&cSpawn teleport canceled due to movement"
-
-# Message when spawn location is set
-spawn-set: "&aSpawn location has been set successfully!"
-
-# Message when there is no valid spawn location set
-spawn-not-set: "&cThere is no valid spawn."
 
 # Heal & Feed a player!
 healed-player: "&aYou have fully healed %target%"
@@ -88,6 +73,36 @@ filter-report: "&b[Filter] &3%player%&b attempted to say: %message%"
 
 # Message for invalid player
 invalid-player: "&cThat player is invalid!"
+
+# Message for the warp already existing
+warp-already-exists: "&cThis warp already exist."
+
+# Message for the warp not existing
+warp-doesnt-exist: "&cThis warp does not exist."
+
+# Message to list all the warps
+list-warps: "&aWarps: %warps%"
+
+# Message for creating warps
+created-warp: "&aCreated the %name% warp!"
+
+# Message for deleting warps
+deleted-warp: "&aDeleted the %name% warp!"
+
+# Message when a player is teleported to a warp
+warp-teleported: "&aYou have been teleported to %warp%"
+
+# Message when Warp teleport is canceled due to movement
+warp-teleporting-canceled: "&c%warp% teleport canceled due to movement"
+
+# Message for countdown to Warp teleport
+warp-teleporting-in-seconds: '&aTeleporting to %warp% in %delay%'
+
+# Message when spawn location is set
+spawn-set: "&aSpawn location has been set successfully!"
+
+# Message when there is no valid spawn location set
+spawn-not-set: "&cThere is no valid spawn."
 
 # Message for updating a player's speed
 updated-speed: "&aSet %target%'s %type% speed to %speed%"
@@ -132,6 +147,18 @@ epiccore-help: |
   &f
   &7» &f/epiccore reload &8- &fReload the config, language file & filter files.
   &7» &f/epiccore help &8- &fGeneral help command of the core.
+  &f
+  &7&m                                                      &f
+
+warps-help: |
+  &7&m                                                      &f
+  &f
+  &c&lWARPS HELP &7» &fList of commands and arguments
+  &f
+  &7» &f/warps create <name> &8- &fCreate a warp at your location.
+  &7» &f/warps delete <name> &8- &fDelete a created warp.
+  &7» &f/warps list &8- &fList all enabled warps.
+  &7» &f/warps <warp> &8- &fTeleport to a warp.
   &f
   &7&m                                                      &f
 
