@@ -1,6 +1,5 @@
-package gg.minecrush.epiccore.Commands.teleportation;
+package gg.minecrush.epiccore.Commands.teleportation.warps;
 
-import com.google.common.xml.XmlEscapers;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.DataStorage.yaml.Warps;
@@ -18,14 +17,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
 
-public class WarpsCommand implements CommandExecutor {
+public class WarpCommand implements CommandExecutor {
 
     private final Config config;
     private final Lang lang;
     private final Warps warps;
     private final Plugin plugin;
 
-    public WarpsCommand(Lang lang, Warps warps, Config config, JavaPlugin plugin) {
+    public WarpCommand(Lang lang, Warps warps, Config config, JavaPlugin plugin) {
         this.lang = lang;
         this.warps = warps;
         this.config = config;
@@ -119,7 +118,7 @@ public class WarpsCommand implements CommandExecutor {
 
     public void helpWarphandler(Player player, String[] args){
         if (args.length != 1){
-            player.sendMessage(lang.getReplacedMessage("invalid-arguments"));
+            player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/warp help"));
             return;
         }
 
@@ -128,7 +127,7 @@ public class WarpsCommand implements CommandExecutor {
 
     public void generalWarphandler(Player player, String[] args){
         if (args.length != 1){
-            player.sendMessage(lang.getReplacedMessage("invalid-arguments"));
+            player.sendMessage(lang.getReplacedMessage("invalid-arguments").replace("%invalid-arguments%", "/warp help"));
             return;
         }
 
