@@ -20,6 +20,18 @@ format-chat: true
 # Permission to chat as staff
 staff-permission: "epiccore.staff.chat"
 
+# Permission to heal a plyer
+heal-command-permission: "epiccore.player.heal"
+
+# Permission to heal other players
+heal-others-command-permission: "epiccore.player.heal.others"
+
+# Permission to feed a plyer
+feed-command-permission: "epiccore.player.feed"
+
+# Permission to feed other players
+feed-others-command-permission: "epiccore.player.feed.others"
+
 # Permission to clear chat
 clearchat-permission: "epiccore.chat.clearchat"
 
