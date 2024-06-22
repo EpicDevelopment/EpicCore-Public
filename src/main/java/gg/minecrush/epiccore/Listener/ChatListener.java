@@ -24,7 +24,7 @@ public class ChatListener implements Listener {
     private final Plugin core;
     private final Config config;
 
-    public ChatListener(Lang lang, Filter filter, Plugin core, Config config){
+    public ChatListener(Lang lang, Filter filter, Plugin core, Config config) {
         this.lang = lang;
         this.filter = filter;
         this.core = core;
@@ -32,19 +32,18 @@ public class ChatListener implements Listener {
     }
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent e){
+    public void onChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
         String message = e.getMessage();
 
-        if (config.getValueBoolean("format-chat")){
+        if (config.getValueBoolean("format-chat")) {
             String format = lang.getMessages("chat-format")
-                    .replace("%player%", player.getName())
-                    .replace("%message%", message);
+                    .replace("{PLAYER}", player.getName())
+                    .replace("{MESSAGE}", message);
 
             if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
                 format = PlaceholderAPI.setPlaceholders(player, format);
             }
-
             format = color.c(convertChatFormat(format));
 
             e.setFormat(format);
@@ -79,16 +78,18 @@ public class ChatListener implements Listener {
             player.sendMessage(lang.getMessages("invalid-characters"));
         }
     }
-
     public static String convertChatFormat(String format) {
-        Pattern pattern = Pattern.compile("%([^%]+)%");
+        format = format.replace("%", "%%");
+        Pattern pattern = Pattern.compile("\\{(\\w+)}");
         Matcher matcher = pattern.matcher(format);
         StringBuffer sb = new StringBuffer();
-        int i = 1;
+
         while (matcher.find()) {
-            matcher.appendReplacement(sb, "%" + i++ + "\\$s");
+            matcher.appendReplacement(sb, "%$1\\$s");
         }
         matcher.appendTail(sb);
+
         return sb.toString();
     }
+
 }
