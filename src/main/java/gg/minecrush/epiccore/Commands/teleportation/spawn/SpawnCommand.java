@@ -37,7 +37,7 @@ public class SpawnCommand implements CommandExecutor {
                 Location loc = player.getLocation();
 
                 try {
-                    if (plugin.getConfig().getString("spawn.location.world").isEmpty()){
+                    if (warps.getValue("spawn.location.world").isEmpty()){
                         player.sendMessage(lang.getReplacedMessage("spawn-not-set"));
                         return false;
                     }
