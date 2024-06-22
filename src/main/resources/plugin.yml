@@ -54,3 +54,5 @@ commands:
   enderchest:
     description: View a players enderchest
     aliases: ec
+  heal:
+    description: Heal yourself or heal a player
