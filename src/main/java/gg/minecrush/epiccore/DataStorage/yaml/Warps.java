@@ -81,6 +81,12 @@ public class Warps {
         return warps.toString();
     }
 
+    public List<String> getWarps(){
+        List<String> warps = new ArrayList<>();
+        config.getKeys(false).forEach(warps::add);
+        return warps;
+    }
+
     public int getInteger(String key) {
         try {
             int message = Integer.parseInt(config.getString(key));
