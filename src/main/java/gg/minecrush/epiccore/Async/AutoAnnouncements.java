@@ -69,7 +69,7 @@ public class AutoAnnouncements {
                     p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1.0F, 1.0F);
                 }
             }
-        }.runTaskTimerAsynchronously(plugin, 0 * 20, 20L * autoAnnouncementsInterval);
+        }.runTaskTimerAsynchronously(plugin, 35 * 20, 20L * autoAnnouncementsInterval);
     }
 
     public synchronized void cancelCurrentTask() {
