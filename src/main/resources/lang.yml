@@ -129,6 +129,10 @@ flight-disabled-other: "&cYou disabled %target%'s flight mode."
 
 flight-disabled-target: "&cYour flight mode has been disabled."
 
+# Message for teleport completed
+teleport-success: "&aTeleported %target% to %player%"
+teleported-all: "&aTeleported all players to you!"
+
 # Message format for report broadcast
 report-broadcast: |
   &f 
