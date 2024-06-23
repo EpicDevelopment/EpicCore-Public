@@ -47,6 +47,7 @@ And a lot more commands.
 # Authors
 
 - [@Invisgg](https://github.com/invisgg) - Main Contributor
+- Eric - Main Contributor
 - [@Snowypy](https://github.com/snowypy) - Main Contributor
 - [@Yirf](https://github.com/yirf) - Idea Contributor
 - [@Qeid](https://github.com/qeid) - Language/Messages creator
