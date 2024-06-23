@@ -62,3 +62,9 @@ commands:
     description: Manage, teleport and list warps!
   warps:
     description: Teleport to a warp
+  teleport:
+    aliases: tp
+    description: Teleport to a user
+  teleporthere:
+    aliases: tphere
+    description: Teleport a player towards you.
