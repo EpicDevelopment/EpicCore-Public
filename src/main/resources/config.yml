@@ -17,7 +17,17 @@ format-chat: true
 
 # Teleport information
 
+# Delay with teleportation
 teleport-delay: 5 # Set it to 0 to disable delay
+
+# Enable or Disable teleport on join
+teleport-join: true
+
+# First join or all joins (True = First Join) , (False = Every join)
+first-join: false
+
+# Teleport join warp
+teleport-warp: "spawn"
 
 # Permissions for various commands and functionalities
 
