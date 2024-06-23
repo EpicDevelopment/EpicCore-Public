@@ -21,7 +21,7 @@ format-chat: true
 teleport-delay: 5 # Set it to 0 to disable delay
 
 # Enable or Disable teleport on join
-teleport-join: true
+teleport-join: false
 
 # First join or all joins (True = First Join) , (False = Every join)
 first-join: false
