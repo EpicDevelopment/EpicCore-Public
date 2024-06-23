@@ -144,6 +144,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("feed").setTabCompleter(new DefaultCompletion());
 
         getCommand("warp").setExecutor(new WarpCommand(lang, warps, config, this));
+        getCommand("warp").setTabCompleter(new DefaultCompletion());
         getCommand("warps").setExecutor(new WarpsCommand(lang, warps, config, this));
         getCommand("warps").setTabCompleter(new WarpsCompletion(warps));
 
