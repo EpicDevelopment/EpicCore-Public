@@ -6,6 +6,9 @@ Basic essentials plugin for Minecraft version 1.20.4
 # Developed With
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515)
 
+## Support
+
+There is no public support discord/channel for this plugin. Open [issues](https://github.com/EpicDevelopment/EpicCore-Public/issues) on `Github` if you find a bug that needs to be fixed.<br>You can try to contact awel with `contact@awel.studio` and snowy with `contact@snowyjs.lol`.
 
 ## Usage/Examples
 
