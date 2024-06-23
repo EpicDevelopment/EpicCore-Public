@@ -11,12 +11,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.entity.Player;
 
-
 import java.util.List;
 import java.util.Random;
 
 public class AutoAnnouncements {
 
+    private static AutoAnnouncements instance;
     private Plugin plugin;
     private List<String> announcements;
     private Lang lang;
@@ -31,6 +31,13 @@ public class AutoAnnouncements {
         loadConfig();
         loadAnnouncements();
         scheduleAutomaticReactions();
+    }
+
+    public static AutoAnnouncements getInstance(Plugin plugin, Lang lang, Config config) {
+        if (instance == null) {
+            instance = new AutoAnnouncements(plugin, lang, config);
+        }
+        return instance;
     }
 
     private void loadAnnouncements() {
@@ -54,22 +61,37 @@ public class AutoAnnouncements {
                 List<String> newAnnouncements = getAnnouncements();
                 if (newAnnouncements.isEmpty()) {
                     cancelCurrentTask();
+                    return;
                 }
                 String msg = newAnnouncements.get(new Random().nextInt(newAnnouncements.size()));
                 Bukkit.broadcastMessage(color.c(msg));
-                for(Player p : Bukkit.getOnlinePlayers()) {
-
+                for (Player p : Bukkit.getOnlinePlayers()) {
                     p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1.0F, 1.0F);
                 }
             }
-        }.runTaskTimerAsynchronously(plugin, 30 * 20, 20 * autoAnnouncementsInterval);
+        }.runTaskTimerAsynchronously(plugin, 0 * 20, 20L * autoAnnouncementsInterval);
     }
 
     public synchronized void cancelCurrentTask() {
-        if (currentTask != null && !currentTask.isCancelled()) {
+        if (currentTask != null) {
             plugin.getLogger().info("Cancelling current automatic announcements task.");
-
-            currentTask.cancel();
+            try {
+                currentTask.cancel();
+                plugin.getLogger().info("Current task cancelled successfully.");
+            } catch (Exception e) {
+                plugin.getLogger().warning("Failed to cancel automatic announcements task: " + e.getMessage());
+            } finally {
+                currentTask = null; // Ensure the reference is cleared
+            }
+        } else {
+            plugin.getLogger().info("No automatic announcements task found to cancel.");
         }
+    }
+
+    public synchronized void reload() {
+        plugin.getLogger().info("Reloading announcements and configuration.");
+        loadConfig();
+        loadAnnouncements();
+        scheduleAutomaticReactions();
     }
 }
