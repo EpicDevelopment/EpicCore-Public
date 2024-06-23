@@ -45,6 +45,7 @@ public final class EpicCore extends JavaPlugin {
     public void onEnable() {
 
         try {
+            getLogger().info("[EpicCore] Loading config life");
             File configFiles = new File(getDataFolder(), "config.yml");
             if (!configFiles.exists()) {
                 saveResource("config.yml", false);
@@ -56,6 +57,7 @@ public final class EpicCore extends JavaPlugin {
         this.config = new Config(this);
 
         try {
+            getLogger().info("[EpicCore] Loading warps life");
             File configFiles = new File(getDataFolder(), "warps.yml");
             if (!configFiles.exists()) {
                 saveResource("warps.yml", false);
@@ -65,8 +67,8 @@ public final class EpicCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
         this.warps = new Warps(this);
-
         try {
+            getLogger().info("[EpicCore] Loading language life");
             File msgFile = new File(getDataFolder(), "lang.yml");
             if (!msgFile.exists()) {
                 saveResource("lang.yml", false);
@@ -76,8 +78,8 @@ public final class EpicCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
         this.lang = new Lang(this, config);
-
         try {
+            getLogger().info("[EpicCore] Loading filter life");
             File msgFile = new File(getDataFolder(), "filtered.yml");
             if (!msgFile.exists()) {
                 saveResource("filtered.yml", false);
@@ -85,6 +87,10 @@ public final class EpicCore extends JavaPlugin {
         } catch (Exception e) {
             getLogger().severe("[EpicCore] Failed to create filter file");
             Bukkit.getPluginManager().disablePlugin(this);
+        }
+
+        if (config.getValueBoolean("automatic-announcements")) {
+            this.autoAnnouncements = new AutoAnnouncements(this, lang, config);
         }
 
         this.filter = new Filter(this);
@@ -114,7 +120,7 @@ public final class EpicCore extends JavaPlugin {
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang, config));
         getCommand("clearchat").setTabCompleter(new ClearChatCompletion());
         getCommand("discord").setExecutor(new DiscordCommand(this, lang, config));
-        getCommand("epiccore").setExecutor(new EpicCoreCommand(lang, config, filter));
+        getCommand("epiccore").setExecutor(new EpicCoreCommand(lang, config, filter, this));
         getCommand("epiccore").setTabCompleter(new AdminCompletion());
         getCommand("mutechat").setExecutor(new MuteChatCommand(this, lang, chatManager, config));
         getCommand("report").setExecutor(new ReportCommand(reportGUI, config));
@@ -180,13 +186,6 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         registerPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         registerPermission(config.getValue("warps-manage-command-permission"), "Heal and feed another player", PermissionDefault.OP);
-
-
-        // Automatic Events Register
-
-        if (config.getValueBoolean("automatic-announcements")) {
-            this.autoAnnouncements = new AutoAnnouncements(this, lang, config);
-        }
     }
 
     public void registerPermission(String name, String description, PermissionDefault defaultValue) {
@@ -197,6 +196,57 @@ public final class EpicCore extends JavaPlugin {
     public void unregisterPermission(String name, String description, PermissionDefault defaultValue){
         Permission permission = new Permission(name, description, defaultValue);
         Bukkit.getPluginManager().removePermission(permission);
+    }
+
+    public void reloadPlugin(){
+        try {
+            getLogger().info("[EpicCore] Loading config life");
+            File configFiles = new File(getDataFolder(), "config.yml");
+            if (!configFiles.exists()) {
+                saveResource("config.yml", false);
+            }
+        } catch (Exception e) {
+            getLogger().severe("[EpicCore] Failed to create configuration file");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        this.config = new Config(this);
+
+        try {
+            getLogger().info("[EpicCore] Loading warps life");
+            File configFiles = new File(getDataFolder(), "warps.yml");
+            if (!configFiles.exists()) {
+                saveResource("warps.yml", false);
+            }
+        } catch (Exception e) {
+            getLogger().severe("[EpicCore] Failed to create warps file");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        this.warps = new Warps(this);
+        try {
+            getLogger().info("[EpicCore] Loading language life");
+            File msgFile = new File(getDataFolder(), "lang.yml");
+            if (!msgFile.exists()) {
+                saveResource("lang.yml", false);
+            }
+        } catch (Exception e) {
+            getLogger().severe("[EpicCore] Failed to create lang file");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        this.lang = new Lang(this, config);
+        try {
+            getLogger().info("[EpicCore] Loading filter life");
+            File msgFile = new File(getDataFolder(), "filtered.yml");
+            if (!msgFile.exists()) {
+                saveResource("filtered.yml", false);
+            }
+        } catch (Exception e) {
+            getLogger().severe("[EpicCore] Failed to create filter file");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        if (config.getValueBoolean("automatic-announcements")) {
+            this.autoAnnouncements = new AutoAnnouncements(this, lang, config);
+        }
+        this.filter = new Filter(this);
     }
 
     @Override
