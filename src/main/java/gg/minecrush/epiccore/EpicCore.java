@@ -244,7 +244,7 @@ public final class EpicCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
         if (config.getValueBoolean("automatic-announcements")) {
-            this.autoAnnouncements = new AutoAnnouncements(this, lang, config);
+            autoAnnouncements.reload();
         }
         this.filter = new Filter(this);
     }
