@@ -10,6 +10,8 @@ import gg.minecrush.epiccore.Commands.gamemodes.*;
 import gg.minecrush.epiccore.Commands.inventory.EnderchestCommand;
 import gg.minecrush.epiccore.Commands.TabCompletes.DefaultCompletion;
 import gg.minecrush.epiccore.Commands.inventory.InvseeCommand;
+import gg.minecrush.epiccore.Commands.teleportation.TeleportCommand;
+import gg.minecrush.epiccore.Commands.teleportation.TeleportHereCommand;
 import gg.minecrush.epiccore.Commands.teleportation.warps.WarpCommand;
 import gg.minecrush.epiccore.Commands.teleportation.spawn.SetSpawnCommand;
 import gg.minecrush.epiccore.Commands.teleportation.spawn.SpawnCommand;
@@ -154,6 +156,12 @@ public final class EpicCore extends JavaPlugin {
         getCommand("warps").setExecutor(new WarpsCommand(lang, warps, config, this));
         getCommand("warps").setTabCompleter(new WarpsCompletion(warps));
 
+        getCommand("teleport").setTabCompleter(new TeleportCompletion());
+        getCommand("teleport").setExecutor(new TeleportCommand(lang, config));
+        getCommand("teleporthere").setExecutor(new TeleportHereCommand(lang, config));
+        getCommand("teleporthere").setTabCompleter(new TeleportHereCompletion());
+
+
 
 
         // Event Registers
@@ -186,6 +194,8 @@ public final class EpicCore extends JavaPlugin {
         registerPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         registerPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         registerPermission(config.getValue("warps-manage-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        registerPermission(config.getValue("teleport-command-permission"), "Teleport players around", PermissionDefault.OP);
+        registerPermission(config.getValue("teleport-here-command-permission"), "Teleport players around", PermissionDefault.OP);
     }
 
     public void registerPermission(String name, String description, PermissionDefault defaultValue) {
@@ -273,5 +283,7 @@ public final class EpicCore extends JavaPlugin {
         unregisterPermission(config.getValue("feed-command-permission"), "Heal and feed yourself", PermissionDefault.OP);
         unregisterPermission(config.getValue("feed-others-command-permission"), "Heal and feed another player", PermissionDefault.OP);
         unregisterPermission(config.getValue("warps-manage-command-permission"), "Heal and feed another player", PermissionDefault.OP);
+        unregisterPermission(config.getValue("teleport-command-permission"), "Teleport players around", PermissionDefault.OP);
+        unregisterPermission(config.getValue("teleport-here-command-permission"), "Teleport players around", PermissionDefault.OP);
     }
 }
