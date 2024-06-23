@@ -1,6 +1,8 @@
 package gg.minecrush.epiccore.Commands;
 
+import gg.minecrush.epiccore.Async.AutoAnnouncements;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
+import gg.minecrush.epiccore.EpicCore;
 import gg.minecrush.epiccore.Util.color;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,17 +11,20 @@ import org.bukkit.entity.Player;
 
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
+import org.bukkit.plugin.Plugin;
 
 public class EpicCoreCommand implements CommandExecutor {
 
-    private final Lang lang;
-    private final Config config;
-    private final Filter filter;
+    private Lang lang;
+    private Config config;
+    private Filter filter;
+    private EpicCore plugin;
 
-    public EpicCoreCommand(Lang lang, Config config, Filter filter){
+    public EpicCoreCommand(Lang lang, Config config, Filter filter, EpicCore plugin){
         this.lang = lang;
         this.config = config;
         this.filter = filter;
+        this.plugin = plugin;
     }
 
     @Override
@@ -59,6 +64,7 @@ public class EpicCoreCommand implements CommandExecutor {
         filter.reloadFile();
         lang.reloadConfig();
         config.reloadConfig();
+        plugin.reloadPlugin();
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
         sender.sendMessage(lang.getReplacedMessage("reloaded").replace("%time%", Long.toString(duration)));
