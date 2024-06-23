@@ -35,8 +35,16 @@ teleport-warp: "spawn"
 warps-manage-command-permission: "epiccore.manage.warps"
 
 # Permission for warping
-
 warps-command-permission: "epiccore.warps" # Example epiccore.warps.test = test warp
+
+# Permission to teleport to players
+teleport-command-permission: "epiccore.manage.teleport"
+
+# Permission to teleport players
+teleport-others-command-permission: "epiccore.manage.teleport.others"
+
+# Permission for teleport players towards you
+teleport-here-command-permission: "epiccore.manage.teleport.here"
 
 # Permission to chat as staff
 staff-permission: "epiccore.staff.chat"
