@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 
 public class FlyCommand implements CommandExecutor {
 
-    private final Lang lang;
-    private final Config config;
+    private Lang lang;
+    private Config config;
 
     public FlyCommand(Lang lang, Config config) {
         this.lang = lang;
