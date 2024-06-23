@@ -21,6 +21,7 @@ import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.DataStorage.yaml.Warps;
 import gg.minecrush.epiccore.GUI.ReportGUI;
 import gg.minecrush.epiccore.Listener.ChatListener;
+import gg.minecrush.epiccore.Listener.JoinListener;
 import gg.minecrush.epiccore.Listener.MuteChatListener;
 import gg.minecrush.epiccore.Listener.ReportListener;
 import org.bukkit.Bukkit;
@@ -153,6 +154,7 @@ public final class EpicCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MuteChatListener(lang, chatManager, config), this);
         getServer().getPluginManager().registerEvents(reportListener, this);
         getServer().getPluginManager().registerEvents(new ChatListener(lang, filter, this, config), this);
+        getServer().getPluginManager().registerEvents(new JoinListener(config, warps, this), this);
 
         // Permission Register
         registerPermission(config.getValue("staff-permission"), "Staff commands!", PermissionDefault.OP);
