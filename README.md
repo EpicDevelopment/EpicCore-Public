@@ -1,5 +1,5 @@
 
-# Epic Teams
+# EpicCore 
 
 Basic essentials plugin for Minecraft version 1.20.4
 
