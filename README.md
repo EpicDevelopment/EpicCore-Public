@@ -8,7 +8,7 @@ Basic essentials plugin for Minecraft version 1.20.4
 
 ## Support
 
-There is no public support discord/channel for this plugin. Open [issues](https://github.com/EpicDevelopment/EpicCore-Public/issues) on `Github` if you find a bug that needs to be fixed.<br>You can try to contact awel with `contact@awel.studio` and snowy with `contact@snowyjs.lol`.
+There is no public support discord/channel for this plugin.<br>Open [issues](https://github.com/EpicDevelopment/EpicCore-Public/issues) on `Github` if you find a bug that needs to be fixed.<br>You can try to contact awel with `contact@awel.studio` and snowy with `contact@snowyjs.lol`.
 
 ## Usage/Examples
 
