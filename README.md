@@ -17,9 +17,6 @@ Basic essentials plugin for Minecraft version 1.20.4 with everything you need in
 - Invsee & EnderChest viewer
 - Player Healing & Player Feeding
 
-# Developed With
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515)
-
 # Support
 
 Remember if you find a issue there is no public support discord/channel for this plugin.<br>Open [issues](https://github.com/EpicDevelopment/EpicCore-Public/issues) on `Github` if you find a bug in the plugin or just a general issue.<br>You can try to contact awel with `contact@awel.studio` and snowy with `contact@snowyjs.lol`.
@@ -54,6 +51,8 @@ And a lot more commands.
 - [@Yirf](https://github.com/yirf) - Idea Contributor
 - [@Qeid](https://github.com/qeid) - Language/Messages creator
 
+# Developed With
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515)
 
 ## License
 
