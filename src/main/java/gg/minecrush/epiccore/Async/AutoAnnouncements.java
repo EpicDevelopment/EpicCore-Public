@@ -17,12 +17,12 @@ import java.util.Random;
 
 public class AutoAnnouncements {
 
-    private final Plugin plugin;
+    private Plugin plugin;
     private List<String> announcements;
-    private final Lang lang;
+    private Lang lang;
     private BukkitTask currentTask;
     private int autoAnnouncementsInterval;
-    private final Config config;
+    private Config config;
 
     public AutoAnnouncements(Plugin plugin, Lang lang, Config config) {
         this.plugin = plugin;
@@ -62,7 +62,7 @@ public class AutoAnnouncements {
                     p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1.0F, 1.0F);
                 }
             }
-        }.runTaskTimerAsynchronously(plugin, 45 * 20, 20 * autoAnnouncementsInterval);
+        }.runTaskTimerAsynchronously(plugin, 30 * 20, 20 * autoAnnouncementsInterval);
     }
 
     public synchronized void cancelCurrentTask() {
