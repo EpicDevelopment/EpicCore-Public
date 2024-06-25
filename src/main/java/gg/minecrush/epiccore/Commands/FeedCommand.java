@@ -3,6 +3,7 @@ package gg.minecrush.epiccore.Commands;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Util.color;
+import gg.minecrush.epiccore.Util.propermessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,10 +14,12 @@ public class FeedCommand implements CommandExecutor {
 
     Lang lang;
     Config config;
+    propermessage msg;
 
-    public FeedCommand(Config config, Lang lang){
+    public FeedCommand(Config config, Lang lang, propermessage msg){
         this.lang = lang;
         this.config = config;
+        this.msg = msg;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class FeedCommand implements CommandExecutor {
         }
 
         target.setSaturation(20);
-        player.sendMessage(lang.getReplacedMessage("fed-player").replace("%target%", target.getName()));
+        msg.send(player,lang.getReplacedMessage("fed-player").replace("%target%", target.getName()));
         return true;
     }
 
