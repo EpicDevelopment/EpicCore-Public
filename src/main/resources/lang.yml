@@ -13,7 +13,7 @@
 #         `----'       `---`                            `----'
 
 # Prefix for the plugin messages
-prefix: '<##F69536>&lCore &8→&r'
+prefix: '#F69536&lCore &8→&r'
 
 # Player chat message format (Unregistered placeholders will cause issues)
 chat-format: "%luckperms_prefix%{PLAYER} &8» &f{MESSAGE}"
@@ -88,6 +88,9 @@ created-warp: "&aCreated the %name% warp!"
 
 # Message for deleting warps
 deleted-warp: "&aDeleted the %name% warp!"
+
+# Message for when a player is already teleporting
+already-teleporting: "&CYou are already teleporting somewhere"
 
 # Message when a player is teleported to a warp
 warp-teleported: "&aYou have been teleported to %warp%"
