@@ -1,9 +1,11 @@
 package gg.minecrush.epiccore.Commands.teleportation.warps;
 
+import gg.minecrush.epiccore.DataStorage.ram.WarpManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.DataStorage.yaml.Warps;
 import gg.minecrush.epiccore.Util.color;
+import gg.minecrush.epiccore.Util.propermessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -23,12 +25,16 @@ public class WarpCommand implements CommandExecutor {
     private final Lang lang;
     private final Warps warps;
     private final Plugin plugin;
+    private final propermessage propermessage;
+    private final WarpManager warpManager;
 
-    public WarpCommand(Lang lang, Warps warps, Config config, JavaPlugin plugin) {
+    public WarpCommand(Lang lang, Warps warps, Config config, JavaPlugin plugin, propermessage msg, WarpManager warpManager) {
         this.lang = lang;
         this.warps = warps;
         this.config = config;
         this.plugin = plugin;
+        this.propermessage = msg;
+        this.warpManager = warpManager;
     }
 
     @Override
@@ -141,24 +147,32 @@ public class WarpCommand implements CommandExecutor {
             return;
         }
 
+        if (warpManager.isWarping(player.getUniqueId())){
+            player.sendMessage(lang.getReplacedMessage("already-teleporting"));
+            return;
+        }
+
         Location loc = player.getLocation();
 
-
+        warpManager.addWarp(player.getUniqueId());
         new BukkitRunnable() {
-            int count = 0;
 
+            int count = 0;
             @Override
             public void run() {
                 if (count < config.getValueInt("teleport-delay")) {
-                    player.sendMessage(lang.getReplacedMessage("warp-teleporting-in-seconds").replace("%warp%", args[0]).replace("%delay%", 5 - count + ""));
+                    propermessage.send(player, lang.getReplacedMessage("warp-teleporting-in-seconds").replace("%warp%", args[0]).replace("%delay%", 5 - count + ""));
                     count++;
                     if (!Objects.equals(formatWithString(loc), formatWithString(player.getLocation()))) {
-                        player.sendMessage(lang.getReplacedMessage("warp-teleporting-canceled").replace("%warp%", args[0]));
+                        propermessage.send(player, lang.getReplacedMessage("warp-teleporting-canceled").replace("%warp%", args[0]));
+                        cancel();
+                    }
+                    if (!warpManager.isWarping(player.getUniqueId())){
+                        propermessage.send(player, lang.getReplacedMessage("warp-teleporting-canceled").replace("%warp%", args[0]));
                         cancel();
                     }
                 } else {
-                    player.sendMessage(lang.getReplacedMessage("warp-teleported").replace("%warp%", args[0]));
-
+                    propermessage.send(player, lang.getReplacedMessage("warp-teleported").replace("%warp%", args[0]));
                     String worldName = warps.getValue(args[0] + ".location.world");
                     double x = warps.getValuedb(args[0] + ".location.x");
                     double y = warps.getValuedb(args[0] + ".location.y");
@@ -168,6 +182,7 @@ public class WarpCommand implements CommandExecutor {
                     World world = Bukkit.getWorld(worldName);
                     Location location = new Location(world, x, y, z, yaw, pitch);
                     player.teleport(location);
+                    warpManager.removeWarp(player.getUniqueId());
                     cancel();
                 }
             }
