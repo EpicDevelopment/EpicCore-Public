@@ -17,6 +17,7 @@ import gg.minecrush.epiccore.Commands.teleportation.spawn.SetSpawnCommand;
 import gg.minecrush.epiccore.Commands.teleportation.spawn.SpawnCommand;
 import gg.minecrush.epiccore.Commands.teleportation.warps.WarpsCommand;
 import gg.minecrush.epiccore.DataStorage.ram.ChatManager;
+import gg.minecrush.epiccore.DataStorage.ram.WarpManager;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Filter;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
@@ -26,6 +27,7 @@ import gg.minecrush.epiccore.Listener.ChatListener;
 import gg.minecrush.epiccore.Listener.JoinListener;
 import gg.minecrush.epiccore.Listener.MuteChatListener;
 import gg.minecrush.epiccore.Listener.ReportListener;
+import gg.minecrush.epiccore.Util.propermessage;
 import org.bukkit.Bukkit;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
@@ -41,6 +43,8 @@ public final class EpicCore extends JavaPlugin {
     private ChatManager chatManager;
     private AutoAnnouncements autoAnnouncements;
     private Warps warps;
+    private WarpManager warpManager;
+    public propermessage propermessage;
 
 
     @Override
@@ -97,7 +101,9 @@ public final class EpicCore extends JavaPlugin {
 
         this.filter = new Filter(this);
 
+        propermessage = new propermessage(config);
         chatManager = new ChatManager();
+        warpManager = new WarpManager();
 
         ReportListener reportListener = new ReportListener();
         ReportGUI reportGUI = new ReportGUI(reportListener, config, lang);
@@ -116,8 +122,7 @@ public final class EpicCore extends JavaPlugin {
 
 
         // Command Registers
-
-        getCommand("spawn").setExecutor(new SpawnCommand(this, lang, config, warps));
+        getCommand("spawn").setExecutor(new SpawnCommand(lang, warps, config, this, propermessage, warpManager));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, lang, config, warps));
         getCommand("clearchat").setExecutor(new ClearChatCommand(this, lang, config));
         getCommand("clearchat").setTabCompleter(new ClearChatCompletion());
@@ -128,7 +133,6 @@ public final class EpicCore extends JavaPlugin {
         getCommand("report").setExecutor(new ReportCommand(reportGUI, config));
         getCommand("report").setTabCompleter(new ReportCompletion());
         getCommand("broadcast").setExecutor(new BroadcastCommand(lang, config));
-
         getCommand("gma").setExecutor(new gamemodeAdventure(lang, config));
         getCommand("gmc").setExecutor(new gamemodeCreative(lang, config));
         getCommand("gmsp").setExecutor(new gamemodeSpectator(lang, config));
@@ -139,23 +143,18 @@ public final class EpicCore extends JavaPlugin {
         getCommand("fly").setTabCompleter(new FlyCompletion());
         getCommand("flyspeed").setExecutor(new FlySpeedCommand(config, lang));
         getCommand("flyspeed").setTabCompleter(new FlySpeedCompletion());
-
         getCommand("enderchest").setExecutor(new EnderchestCommand(lang, config));
         getCommand("invsee").setExecutor(new InvseeCommand(lang, config));
         getCommand("enderchest").setTabCompleter(new DefaultCompletion());
         getCommand("invsee").setTabCompleter(new DefaultCompletion());
-
-        getCommand("heal").setExecutor(new HealCommand(config, lang));
+        getCommand("heal").setExecutor(new HealCommand(config, lang, propermessage));
         getCommand("heal").setTabCompleter(new DefaultCompletion());
-
-        getCommand("feed").setExecutor(new FeedCommand(config, lang));
+        getCommand("feed").setExecutor(new FeedCommand(config, lang, propermessage));
         getCommand("feed").setTabCompleter(new DefaultCompletion());
-
-        getCommand("warp").setExecutor(new WarpCommand(lang, warps, config, this));
-        getCommand("warp").setTabCompleter(new DefaultCompletion());
-        getCommand("warps").setExecutor(new WarpsCommand(lang, warps, config, this));
+        getCommand("warp").setExecutor(new WarpCommand(lang, warps, config, this, propermessage, warpManager));
+        getCommand("warp").setTabCompleter(new WarpCompletion());
+        getCommand("warps").setExecutor(new WarpsCommand(lang, warps, config, this, propermessage, warpManager));
         getCommand("warps").setTabCompleter(new WarpsCompletion(warps));
-
         getCommand("teleport").setTabCompleter(new TeleportCompletion());
         getCommand("teleport").setExecutor(new TeleportCommand(lang, config));
         getCommand("teleporthere").setExecutor(new TeleportHereCommand(lang, config));
