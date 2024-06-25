@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.entity.Player;
 
 public class color {
-    private static final Pattern pattern = Pattern.compile("&#[a-fA-F0-9]{6}|#[a-fA-F0-9]{6}|<##[a-fA-F0-9]{6}>");
+    private static final Pattern pattern = Pattern.compile("&#[a-fA-F0-9]{6}|#[a-fA-F0-9]{6}");
 
     public static String c(String message) {
         message = message.replace("%nl%", "\n");
@@ -24,6 +25,10 @@ public class color {
         for (String text : texts)
             a.add(c(text));
         return a;
+    }
+
+    public void actionBar(Player player, String message){
+
     }
 
     public static String noColor(String message) {
