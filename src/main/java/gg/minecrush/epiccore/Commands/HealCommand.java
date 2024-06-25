@@ -3,6 +3,7 @@ package gg.minecrush.epiccore.Commands;
 import gg.minecrush.epiccore.DataStorage.yaml.Config;
 import gg.minecrush.epiccore.DataStorage.yaml.Lang;
 import gg.minecrush.epiccore.Util.color;
+import gg.minecrush.epiccore.Util.propermessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,10 +14,12 @@ public class HealCommand implements CommandExecutor {
 
     Lang lang;
     Config config;
+    propermessage msg;
 
-    public HealCommand(Config config, Lang lang){
+    public HealCommand(Config config, Lang lang, propermessage msg){
         this.lang = lang;
         this.config = config;
+        this.msg = msg;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class HealCommand implements CommandExecutor {
 
         target.setHealth(20);
         target.setSaturation(20);
-        player.sendMessage(lang.getReplacedMessage("healed-player").replace("%target%", target.getName()));
+        msg.send(player, lang.getReplacedMessage("healed-player").replace("%target%", target.getName()));
         return true;
     }
 
