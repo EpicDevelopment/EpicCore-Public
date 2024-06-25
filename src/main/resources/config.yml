@@ -17,6 +17,10 @@ format-chat: true
 
 # Teleport information
 
+
+# Enable actionbar messages for some messages
+action-bar: true
+
 # Delay with teleportation
 teleport-delay: 5 # Set it to 0 to disable delay
 
