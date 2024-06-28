@@ -136,6 +136,9 @@ flight-disabled-target: "&cYour flight mode has been disabled."
 teleport-success: "&aTeleported %target% to %player%"
 teleported-all: "&aTeleported all players to you!"
 
+tpa-request-sent: "&aSent a teleport request to %player%"
+tpa-request-received: "&aReceived a teleport request from %player%"
+
 # Message format for report broadcast
 report-broadcast: |
   &f 
