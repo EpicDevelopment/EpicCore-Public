@@ -57,7 +57,7 @@ public class FeedCommand implements CommandExecutor {
             return false;
         }
 
-        target.setSaturation(20);
+        target.setFoodLevel(20);
         msg.send(player,lang.getReplacedMessage("fed-player").replace("%target%", target.getName()));
         return true;
     }
