@@ -57,8 +57,8 @@ public class HealCommand implements CommandExecutor {
             return false;
         }
 
-        target.setHealth(20);
-        target.setSaturation(20);
+        player.setHealth(player.getMaxHealth());
+        target.setFoodLevel(20);
         msg.send(player, lang.getReplacedMessage("healed-player").replace("%target%", target.getName()));
         return true;
     }
