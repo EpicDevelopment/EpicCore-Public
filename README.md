@@ -1,5 +1,5 @@
 
-# EpicCore 
+# EpicCore 1.1
 
 Basic essentials plugin for Minecraft version 1.20.4 with everything you need in it
 
